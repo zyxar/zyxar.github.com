@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Lang | Mark's Logs]]></title>
   <link href="http://zyxar.github.com/blog/categories/lang/atom.xml" rel="self"/>
   <link href="http://zyxar.github.com/"/>
-  <updated>2013-02-14T00:44:28+08:00</updated>
+  <updated>2013-02-14T00:49:54+08:00</updated>
   <id>http://zyxar.github.com/</id>
   <author>
     <name><![CDATA[Marcus Zy]]></name>
@@ -390,7 +390,7 @@ fmt.Printf("%v", c1)
 
 <ul>
 <li><code>&amp;</code> <em>address of</em></li>
-<li><code>*</code> <em>type modifier</em>, <em>dreference</em></li>
+<li><code>*</code> <em>type modifier</em>, <em>dereference</em></li>
 <li>cannot take the address of a literal or a constant</li>
 <li><em>pointer arithmetic</em> is <strong>NOT</strong> allowed</li>
 <li><code>nil</code> pointer dereference is illegal</li>
