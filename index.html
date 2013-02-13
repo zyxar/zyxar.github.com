@@ -1,1 +1,1247 @@
-My Octopress Page is coming soon &hellip;
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mark's Logs</title>
+  <meta name="author" content="Marcus Zy">
+
+  
+  <meta name="description" content="Tools Nokia Suite: limited support, for backup and sync
+Contacts: cannot sync group
+only on Windows NokiaLink: for OS X
+for Windows Qt SDK for OS X, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zyxar.github.com/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mark's Logs" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Mark's Logs</a></h1>
+  
+    <h2>Reading, thinking, and seeing.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zyxar.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/19/n9/">N9, MeeGo, Et Al</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-19T17:39:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/19/n9/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Tools</h2>
+
+<ol>
+<li>Nokia Suite:
+
+<ul>
+<li>limited support, for backup and sync</li>
+<li>Contacts: cannot sync group</li>
+<li>only on <a href="http://nds1.nokia.com/files/support/global/phones/software/Nokia_Suite_webinstaller_ALL.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://nokia.com/nokialink">NokiaLink</a>:
+
+<ul>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.dmg">OS X</a></li>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://www.developer.nokia.com/Develop/Qt/Tools/">Qt SDK</a>
+
+<ul>
+<li>for OS X, Windows and Linux; online or offline</li>
+<li>Developer account required</li>
+</ul>
+</li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php">Flasher</a>
+
+<ul>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=MacFlasher_3.12.1.dmg">OS X</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_amd64.deb">Linux-x64</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_i386.deb">Linux-x86</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=WinFlasher_3.12.1.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://harmattan-dev.nokia.com/pool/">Repository</a>
+
+<ul>
+<li><a href="https://downloads.maemo.nokia.com">Official</a></li>
+<li><a href="http://my-meego.com/">My MeeGo</a></li>
+</ul>
+</li>
+</ol>
+
+
+<h2>Dev Mode</h2>
+
+<ul>
+<li>Settings -> Security -> Developer mode</li>
+</ul>
+
+
+<h2>Remove Native Apps?</h2>
+
+<ul>
+<li>Native apps for Chinese Mainland, such as <code>qunar</code>, <code>kaixin</code>, cannot be purged before applying some tricks.</li>
+<li>Package <code>mp-harmattan-003-pr</code> has dependencies on those apps, which if been removed, the phone would be frozen as a rock.</li>
+<li>This <a href="https://gitorious.org/mp-harmattan-003-pr/mp-harmattan-003-pr">site</a> provides a work round, a patched package.</li>
+</ul>
+
+
+<h2>Selected Apps</h2>
+
+<ol>
+<li>Foursquare: <a href="http://my-meego.com/downloads/sendfile.php?DownloadID=285">download</a> and <code>dpkg -i</code></li>
+<li>Skype: <code>apt-get install account-plugin-skype l10n-app-skype</code></li>
+<li>Gtalk: <code>apt-get install account-plugin-google-talk l10n-app-google</code></li>
+<li>Twitter: <code>apt-get install twitter l10n-app-twitter webupload-service-twitter</code></li>
+<li>Facebook: <code>apt-get install facebook l10n-app-facebook webupload-service-facebook</code></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/08/go-lang-notes/">Go Lang Notes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-08T14:50:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/04/08/go-lang-notes/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>TL;DR</h2>
+
+<h2>0. Resources</h2>
+
+<ul>
+<li><a href="http://godashboard.appspot.com/project">Go Dashboard</a></li>
+<li><a href="http://go-lang.cat-v.org">Go Lang SRC</a></li>
+<li><a href="http://tour.golang.org">tour.golang</a>, <a href="https://gist.github.com/2317744">solutions</a></li>
+<li><a href="https://gist.github.com/2317067">My first Go program</a></li>
+<li>PaaS: GAE, Heroku</li>
+</ul>
+
+
+<h2>I. Interaction with other language</h2>
+
+<h3>C</h3>
+
+<ul>
+<li><a href="http://golang.org/cmd/cgo">cgo</a>. Include C-libs or even valid C-code by placing these statements as comments <em>immediately</em> above the import &#8220;C&#8221; line:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="c1">//#include &lt;stdlib.h&gt; </span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;C&quot;</span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;unsafe&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>C.uint</code>, <code>C.long</code>, <code>C.random()</code>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">i</span> <span class="nb">int</span>
+</span><span class='line'><span class="n">C</span><span class="p">.</span><span class="nb">uint</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'><span class="nb">int</span><span class="p">(</span><span class="n">C</span><span class="p">.</span><span class="n">random</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Strings convertion: <code>C.CString(s)</code>, <code>C.GoString(cs)</code>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="n">cstring</span> <span class="p">:=</span> <span class="n">C</span><span class="p">.</span><span class="n">CString</span><span class="p">(</span><span class="n">gostring</span><span class="p">)</span>
+</span><span class='line'><span class="k">defer</span> <span class="n">C</span><span class="p">.</span><span class="n">free</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">cstring</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Memory allocations made by C code are not known to Go&#8217;s memory manager:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">defer</span> <span class="n">C</span><span class="p">.</span><span class="n">free</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">Cvariable</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Pseudo <strong>#cgo</strong> directives:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>hdfs.go</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">// #cgo linux CFLAGS: -I/opt/jdk/include -I/opt/jdk/include/linux</span>
+</span><span class='line'><span class="c1">// #cgo linux LDFLAGS: -Llib -lhdfs -L/opt/jdk/jre/lib/amd64/server -ljvm</span>
+</span><span class='line'><span class="c1">// #cgo darwin LDFLAGS: -L/usr/lib/java -lhdfs -framework JavaVM</span>
+</span><span class='line'><span class="c1">// #include &quot;hdfs.h&quot;</span>
+</span><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm">int getlen(char*** ptr) {</span>
+</span><span class='line'><span class="cm">    int i = 0;</span>
+</span><span class='line'><span class="cm">    while (ptr[i] != NULL) ++i;</span>
+</span><span class='line'><span class="cm">    return i;</span>
+</span><span class='line'><span class="cm">}</span>
+</span><span class='line'><span class="cm">int getl(char*** ptr) {</span>
+</span><span class='line'><span class="cm">    int i = 0;</span>
+</span><span class='line'><span class="cm">    while (ptr[0][i] != NULL) ++i;</span>
+</span><span class='line'><span class="cm">    return i;</span>
+</span><span class='line'><span class="cm">}</span>
+</span><span class='line'><span class="cm">char* getstring(char*** ptr, int i, int j) {</span>
+</span><span class='line'><span class="cm">    return ptr[i][j];</span>
+</span><span class='line'><span class="cm">}</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;C&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Pointer arithmetic:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">p</span> <span class="p">*</span><span class="n">C</span><span class="p">.</span><span class="n">hdfsFileInfo</span>
+</span><span class='line'><span class="n">p</span> <span class="p">=</span> <span class="p">(*</span><span class="n">C</span><span class="p">.</span><span class="n">hdfsFileInfo</span><span class="p">)(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="nb">uintptr</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">info</span><span class="p">))</span> <span class="p">+</span> <span class="nb">uintptr</span><span class="p">(</span><span class="n">i</span><span class="p">)*</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Sizeof</span><span class="p">(</span><span class="n">C</span><span class="p">.</span><span class="n">hdfsFileInfo</span><span class="p">{})))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>C++</h3>
+
+<ul>
+<li><p>SWIG (Simplified Wrapper and Interface Generator) supports for calling C++/C code from Go on Linux.</p>
+
+<ul>
+<li>Write the SWIG interface file for the lib to be wrapped</li>
+<li>SWIG generates the C stub functions</li>
+<li>called using the <code>cgo</code> machinery</li>
+</ul>
+</li>
+<li><p>SWIG does <em>NOT</em> understand all of C++.</p></li>
+</ul>
+
+
+<h2>II. Basic constructs and elementary data types</h2>
+
+<h3>Filenames, Keywords, Identifiers</h3>
+
+<ul>
+<li>Filenames may not contain spaces or any other special chars.</li>
+<li>Identifiers: valid if begin with a letter (even Unicode) and followed by 0 or more letters or Unicode digits.</li>
+<li><code>_</code> is <em>blank identifier</em>.</li>
+<li><em>anonymous</em></li>
+<li>25 <em>keywords</em> or reserved words:
+  <code>break</code>, <code>case</code>, <code>chan</code>, <code>const</code>, <code>continue</code>, <code>default</code>, <code>defer</code>, <code>else</code>, <code>fallthrough</code>, <code>for</code>, <code>func</code>, <code>go</code>, <code>goto</code>, <code>if</code>, <code>import</code>, <code>interface</code>, <code>map</code>, <code>package</code>, <code>range</code>, <code>return</code>, <code>select</code>, <code>struct</code>, <code>switch</code>, <code>type</code>, <code>var</code></li>
+<li>36 <em>predeclared identifiers</em>:
+  <code>append</code>, <code>bool</code>, <code>byte</code>, <code>cap</code>, <code>close</code>, <code>complex</code>, <code>complex64</code>, <code>complex128</code>, <code>copy</code>, <code>false</code>, <code>float32</code>, <code>float64</code>, <code>imag</code>, <code>int</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>, <code>iota</code>, <code>len</code>, <code>make</code>, <code>new</code>, <code>nil</code>, <code>panic</code>, <code>print</code>, <code>println</code>, <code>real</code>, <code>recover</code>, <code>string</code>, <code>true</code>, <code>uint</code>, <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code>, <code>uintptr</code></li>
+<li>Used punctuation chars: <code>.</code>,<code>,</code>,<code>;</code>,<code>:</code>,<code>...</code></li>
+<li>Used delimiters: <code>()</code>, <code>[]</code>, <code>{}</code></li>
+<li>Automatic semicolon insertion. However, multiple statements must be seperated by <code>;</code> on one line.</li>
+</ul>
+
+
+<h3>Basic structure and components</h3>
+
+<h4>Packages, import and visibility</h4>
+
+<ul>
+<li>Every go-file belongs to one (and only one) <em>package</em>. Many different <code>.go</code> files can belong to one <em>package</em>.</li>
+<li>Package must be indicated on the first line. A standalone exec belongs to package <strong>main</strong>; each go app contains one package <em>main</em>; a package name is written in <strong>lowercase</strong> letters.</li>
+<li>Package is compiled as a unit; each dir contains one package by convetion.</li>
+<li><em>Every piece of code is compiled only once</em>.</li>
+<li>Apart from <code>_</code>, Ids of code-objs have to be unique in a package.</li>
+<li><p><strong>Visibility Rule</strong>:</p>
+
+<ul>
+<li>Id start with an uppercase, then the &#8216;obj&#8217; with this identifier is <em>visible</em> in code outside the package: <em>exported</em>, like <em>public</em> in OO.</li>
+<li>Id start with a lowercase are not visible outside the package: like <em>private</em>.</li>
+</ul>
+</li>
+<li><p>alias package: <code>import fm "fmt"</code></p></li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/04/08/go-lang-notes/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/10/install-name-on-os-x/">Install_name on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-10T20:29:00+08:00" pubdate data-updated="true">Mar 10<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/10/install-name-on-os-x/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On OS X, the loader <code>dyld</code> does have a search path, defined in the <code>DYLD_FRAMEWORK_PATH</code> and <code>DYLD_LIBRARY_PATH</code> variables. However, these are empty on OS X by default, so they rarely matter.</p>
+
+<p>Sometimes, we want to install a third-party library to a location, which is not system-defined, not <em>/usr/local/lib</em> nor <em>/usr/lib</em>, for some personal reasons or when you did not have root privilege. Suppose it was <em>libdummy</em>. If <em>libdummy</em>&#8217;s <strong>install_name</strong> was just libdummy.1.dylib or so, and you were building a program which links against libdummy. After the compilation, you checked the shared libraries your program used:</p>
+
+<pre><code>otool -L program
+</code></pre>
+
+<p>then you could see libdummy.1.dylib in the output, just <em>libdummy.1.dylib</em> in that line. Ja, the linker stored <em>install_name</em> there, not the location of the library.
+Then you let the program run, but the <code>dyld</code> said it could not find the proper libdummy.1.dylib. That&#8217;s the story a lot of people would experience on OS X.</p>
+
+<p>On Linux, we could modify <em>/etc/ld.so.conf</em> in order to include some other directories when the loader searches for a library. However, on OS X things are different. Also, we would not like to set <em>DYLD_</em> variables every time launching the program, nor add those variables in <em>.zshrc</em>, <em>.bashrc</em>, &#8230;</p>
+
+<p>De facto, as we know <strong>install_name</strong> matters, we could simply employ it.</p>
+
+<p>On Darwin platform, <code>gcc</code> has some platform dependent options, such as <code>-dynamic</code>, <code>-arch</code>, <code>-bundle</code>, and <code>-install_name</code> plays an important role here.</p>
+
+<pre><code>gcc -o libdummy.dylib -install_name ${PREFIX}/lib/libdummy.dylib ...
+</code></pre>
+
+<p>would set <strong>install_name</strong> for libdummy.dylib to a well-defined path. Next time when linking your program against libdummy, the linker would store that path. Use <code>otool -D</code> to print the <strong>install_nam</strong> for specified library.</p>
+
+<p>Besides absolute paths, we could use other techniques as well:
+<strong>@executable_path</strong>, <strong>@loader_path</strong>, <strong>@rpath</strong>. This <a href="https://wincent.com/wiki/@executable_path,_@load_path_and_@rpath">article</a> describes these very well.</p>
+
+<p>For already built libraries and programs, there is no need to rebuild them. On OS X, there is a very useful tool: <code>install_name_tool</code>.</p>
+
+<ul>
+<li>change <strong>install_name</strong> for a library:
+  <code>install_name_tool -id "new_install_name" libdummy.dylib</code></li>
+<li>change linked <strong>install_name</strong> in a program:
+  <code>install_name_tool -change "old_install_name" "new_install_name" program</code></li>
+</ul>
+
+
+<p>One more thing. If you use <code>cmake</code> to generate Makefile for you project, you could solve the <strong>install_name</strong> issue like <a href="http://www.cmake.org/pipermail/cmake/2011-April/043826.html">this</a>:</p>
+
+<pre><code>SET(CMAKE_INSTALL_NAME_DIR @executable_path)
+</code></pre>
+
+<p>Replace <em>@executable_path</em> with your own choice.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/03/remote-exposure/">Remote Exposure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T20:44:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/03/remote-exposure/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>1. Choosing the Right Equipment</h2>
+
+<h3>Cameras</h3>
+
+<ul>
+<li><p>Film SLR is still a popular camera choice for a remote expedition.</p>
+
+<ul>
+<li>old manual SLRs, as well as most rangefinders, possess a mechanical shutter system that can operate without any power source;</li>
+<li><strong>downsides</strong>: no instantly review; more experience needed; physical medium of film;</li>
+<li>fSLR can be a great backup.</li>
+</ul>
+</li>
+<li><p>DSLRs</p>
+
+<ul>
+<li>pros: larger sensors, modular and interchangeable lenses, live view, longer battery life, faster, auto-bracketing;</li>
+<li>cons: heavier and bulkier;</li>
+<li><em>HDR</em> capability.</li>
+</ul>
+</li>
+<li><p>Compact Cameras</p>
+
+<ul>
+<li><strong>disadvantages</strong>: heavy noise, low battery life, slow autofocus, shutter lag, non-interchangeable lenses; even no viewfinder; lack of &#8216;RAW&#8217;;</li>
+<li>considerable <em>only</em> when:
+
+<ol>
+<li>the climb is very difficult: light weight is more important than bringing back good images;</li>
+<li>snapshots to complement your personal memories;</li>
+<li>a high-end compact could serve as a useful backup.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>EVILs (Electonic Viewfinder Interchangeable Lens Cameras)</p>
+
+<ul>
+<li>designed for street photography; close to APS-C DSLRs (with consumer lenses);</li>
+<li>cons: absence of an optical viewfinder;</li>
+<li>trade-off between weight and some special features and more choices in lenses (against DSLR).</li>
+</ul>
+</li>
+<li><p>The Big Stuff</p>
+
+<ul>
+<li>a bad idea.</li>
+</ul>
+</li>
+<li><p><strong>Summary</strong></p>
+
+<ul>
+<li>DSLR or EVIL; compact as a backup.</li>
+<li>it depends.</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Lenses</h3>
+
+<ul>
+<li>balance versatility and features with weight and portability;</li>
+<li>no need to focus on large apertures;</li>
+<li>sometimes it is inconvenient to change lenses;</li>
+<li>a wide lens is generally the most useful; <em>default</em> choice;</li>
+<li>oftentimes, telephoto lenses are a necessity; 200mm should be enough; <em>secondary</em> choice;</li>
+<li>ultra wide lenses are tricky to use;</li>
+<li>prime lenses: for experienced;</li>
+<li>gather some statistics in photo archives.</li>
+</ul>
+
+
+<h3>Carrying Systems</h3>
+
+<ul>
+<li><strong>have your camera accessible at all times</strong>;</li>
+<li>backpack with survival items;</li>
+<li>without fuss;</li>
+<li>size should be adapted;</li>
+<li>all the equipment you might use should be accessible;</li>
+<li>reasonably weather resistant;</li>
+<li>simple design: internal separators and a small pocket for memory cards and batteries;</li>
+<li>lightweight;</li>
+<li><em>camera backpacks</em> are worst, <em>chest</em> bag and <em>shoulder</em> bag are not that good;</li>
+<li>a <em>belt system</em> is the best solution: a padded belt and a few detachable pouches.</li>
+</ul>
+
+
+<h3>Battery and Memory Strategies</h3>
+
+<ul>
+<li>at least enough cards to get you through one day of shooting;</li>
+<li><em>cold is the deadliest threat to batteries</em>;</li>
+<li>careful and constant monitoring power sources;</li>
+</ul>
+
+
+<h3>Odds and Ends</h3>
+
+<ul>
+<li>lens caps, <em>UV filters</em>;</li>
+<li><em>lens hoods</em>;</li>
+<li><em>microfiber cloth</em>;</li>
+<li>need permission from every recognizable person in images;</li>
+</ul>
+
+
+<h3>Dead Weight</h3>
+
+<ul>
+<li>tripod: isn&#8217;t very useful in the mountains -> find a platform stable enough;</li>
+<li>artifical lighting: flash is more trouble than help;</li>
+<li>filters: UV or clear filters only;</li>
+<li>laptop: no;</li>
+</ul>
+
+
+<h3>Bring with</h3>
+
+<ul>
+<li><p>For Hiking and Less Demanding Climbs, e.g.:</p>
+
+<ul>
+<li>Nikon D90 w/ 2+ batteries, 12GB SD cards;</li>
+<li>Nikkor 16-35mm f/4 VR, 70-300mm f/4.5-5.6 VR (equipped w/ UV);</li>
+<li>Think Tank Skin belt system;</li>
+</ul>
+</li>
+<li><p>For Difficult Climbs, e.g.:</p>
+
+<ul>
+<li>EP-1 Pen m43, w/ 12GB SD cards;</li>
+<li>Zuiko 14-42mm f/3.5-5.6;</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/03/remote-exposure/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/03/25-recipes-for-getting-started-with-r/">25 Recipes for Getting Started With R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T20:42:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/03/25-recipes-for-getting-started-with-r/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>1. Downloading and Installing R</h2>
+
+<p><em>Noting special</em></p>
+
+<h2>2. Getting Help on a Function</h2>
+
+<p><code>help()</code>, <code>args()</code>, <code>example()</code>, <code>?func</code></p>
+
+<h2>3. Viewing the Supplied Documentation</h2>
+
+<p><code>help.start()</code></p>
+
+<h2>4. Searching the Web for Help</h2>
+
+<p><code>RSiteSearch("hey phrase")</code></p>
+
+<h2>5. Reading Tabular Datafiles</h2>
+
+<pre><code>read.table("target.txt", stringsAsFactor=FALSE)
+</code></pre>
+
+<p><em>will prevent <code>read.table()</code> from interpreting character string as factor</em>.</p>
+
+<p>Other options: <em><code>na.strings="."</code></em>, <em><code>header=T</code></em>, etc.</p>
+
+<h2>6. Reading from CSV Files</h2>
+
+<pre><code>read.csv("filename", header=T, as.is=T)
+</code></pre>
+
+<p><code>as.is=T</code> indicates that <strong>R</strong> should not interpret nonnumeric data as a <em>factor</em>.</p>
+
+<h2>7. Creating a Vector</h2>
+
+<p><code>c(...)</code></p>
+
+<h2>8. Computing Basic Statistics</h2>
+
+<ul>
+<li><code>na.rm=T</code> ignore <em>NA</em> values in data, otherwise result would be invalidated;</li>
+<li><code>lapply()</code> is magic.</li>
+</ul>
+
+
+<h2>9. Initializing a Data Frame from Column Data</h2>
+
+<pre><code>dfrm &lt;- data.frame(v1, v2, v3, v4)
+dfrm &lt;- as.data.frame(list.of.vectors)
+</code></pre>
+
+<h2>10. Selecting Data Frame Column by Position</h2>
+
+<ul>
+<li><code>dfrm[[n]]</code>, <code>dfrm[, n]</code>: returns <em>n</em>th column;</li>
+<li><code>dfrm[n]</code>: returns a data frame of <em>n</em>th column;</li>
+<li><code>dfrm[c(n1, n2, ..., nk)]</code>, <code>dfrm[, c(n1, n2, ..., nk)]</code>: returns a data frame of <em>k</em> columns.</li>
+</ul>
+
+
+<h2>11. Selecting Data Frame column by Name</h2>
+
+<p>Similar to the previous section.</p>
+
+<ul>
+<li><code>dfrm[["name"]]</code>, <code>dfrm$name</code>: returns <em>one column</em>, called <em>name</em>;</li>
+<li><code>dfrm["name"]</code>, <code>dfrm[c("name1", "name2", ..., "name3")]</code>, <code>dfrm[, "name"]</code>, <code>dfrm[, c(...)]</code>.</li>
+</ul>
+
+
+<h2>12. Forming a Confidence Interval for a Mean</h2>
+
+<ul>
+<li><code>t.test(x)</code>: apply to sample <em>x</em>, to determine a confidence interval;</li>
+<li><code>conf.level</code> argument: see intervals at other levels.</li>
+</ul>
+
+
+<h2>13. Forming a Confidence Interval for a Proportion</h2>
+
+<ul>
+<li><code>prop.test(n, x)</code>: sample size <em>n</em>, <em>x</em> successes;</li>
+<li>use <code>conf.level</code> argument for other confidence levels.</li>
+</ul>
+
+
+<h2>14. Comparing the Means of Two Samples</h2>
+
+<p>By default, <code>t.test()</code> assumes data is not paired. Test with two sample <em>x</em>, <em>y</em>:</p>
+
+<pre><code>t.test(x, y, paired=T)
+</code></pre>
+
+<h2>15. Testing a Correlation for Significance</h2>
+
+<ul>
+<li><code>cor.test(x, y, method="Spearman")</code> for nonnormally data; default is <em>Pearson</em> method.</li>
+<li>the function returns several values, including <em>p</em>-value from the test of significance. <u><em>p</em> &lt; 0.05</u> indicates that the correlation is likely significant; otherwise, not.</li>
+</ul>
+
+
+<h2>16. Creating a Scatter Plot</h2>
+
+<ul>
+<li><code>plot(x, y)</code>: two parallel vectors <em>x</em> and <em>y</em>;</li>
+<li><code>plot(dfrm)</code>: for data frame.</li>
+</ul>
+
+
+<h2>17. Creating a Bar Chart</h2>
+
+<ul>
+<li><code>barplot(vector)</code>;</li>
+<li>ref <code>tapply()</code>;</li>
+<li><code>barchart()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>18. Creating a Box Plot</h2>
+
+<ul>
+<li><code>boxplot(vector)</code></li>
+</ul>
+
+
+<h2>19. Creating a Histogram</h2>
+
+<ul>
+<li><code>hist(vector, number.of.bins)</code>: 7 bins by default;</li>
+<li><code>histogram()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>20. Performing Simple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ x)</code>: <code>y ~ x</code> is a <em>model formula</em></li>
+</ul>
+
+
+<h2>21. Performing Multiple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ u + v + w)</code></li>
+</ul>
+
+
+<h2>22. Getting Regression Statistics</h2>
+
+<ul>
+<li><p><code>m &lt;- lm(y ~ u + v + w)</code></p>
+
+<pre><code>  anova(m)                        ANOVA table
+  coef(m), coefficients(m)        Model coefficients
+  confint(m)                      Confidence intervals for the regression coefficients
+  deviance(m)                     Residual sum of squares
+  effects(m)                      Vector of orthogonal effects
+  fitted(m)                       Vector of fitted *y* values
+  resid(m), residuals(m)          Model residuals
+  summary(m)                      Key statistics
+  vcov(m)                         Variance-covariance matrix of the main parameters
+</code></pre></li>
+</ul>
+
+
+<h2>23. Diagnosing a Linear Regression</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>m <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ x<span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>m<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>library<span class="p">(</span>car<span class="p">)</span>
+</span><span class='line'>outlier.test<span class="p">(</span>m<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>24. Predicting New Values</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>m <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ u <span class="o">+</span> v <span class="o">+</span> w<span class="p">)</span>
+</span><span class='line'>preds <span class="o">&lt;-</span> data.frame<span class="p">(</span>u<span class="o">=</span><span class="m">3.1</span><span class="p">,</span> v<span class="o">=</span><span class="m">4.0</span><span class="p">,</span> w<span class="o">=</span><span class="m">5.5</span><span class="p">)</span>
+</span><span class='line'>predict<span class="p">(</span>m<span class="p">,</span> newdata<span class="o">=</span>preds<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>preds <span class="o">&lt;-</span> data.frame<span class="p">(</span>
+</span><span class='line'>            u<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">),</span>
+</span><span class='line'>            v<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">),</span>
+</span><span class='line'>            w<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">))</span>
+</span><span class='line'>predict<span class="p">(</span>m<span class="p">,</span> newdata<span class="o">=</span>preds<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>use <code>interval="prediction"</code> argument of <code>predict()</code> to obtain the confidence intervals.</li>
+</ul>
+
+
+<h2>25. Accessing the Functions in a Package</h2>
+
+<ul>
+<li><code>library(packagename)</code>;</li>
+<li><code>detach(package:name)</code>;</li>
+<li>higher function <strong>masks</strong> the lower function.</li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/03/data-mashups-in-r/">Data Mashups in R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T20:31:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/03/data-mashups-in-r/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Ch.I Mapping Foreclosures</h2>
+
+<ul>
+<li><p>download</p>
+
+<pre><code>  download.file(url="URL", destfile="DEST")
+</code></pre></li>
+<li><p>regex</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>grep<span class="p">()</span>
+</span><span class='line'>gsub<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Yahoo!&#8217;s Latitude and Longitude service: <a href="http://developer.yahoo.com/wsregapp">sign up</a></p></li>
+<li><p>Parse XML</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>install.packages<span class="p">(</span><span class="s">&quot;XML&quot;</span><span class="p">)</span>
+</span><span class='line'>library<span class="p">(</span><span class="s">&quot;XML&quot;</span><span class="p">)</span>
+</span><span class='line'>xmlTreeParse<span class="p">(</span>requestURL<span class="p">,</span> isURL<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>install.package<span class="p">(</span><span class="s">&quot;RCurl&quot;</span><span class="p">)</span>
+</span><span class='line'>library<span class="p">(</span><span class="s">&quot;RCurl&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Proxy</p>
+
+<pre><code>  Sys.setenv("http_proxy" = "http://username:passwd@host:port")
+</code></pre></li>
+<li><p><em>Magic</em> <code>str()</code></p>
+
+<p>  it is good practice to closely examine each package&#8217;s data structures using <code>str()</code></p></li>
+<li><p>Exception handling</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>tryCatch<span class="p">({</span>
+</span><span class='line'>    xmlResult <span class="o">&lt;-</span> xmlTreeParse<span class="p">(</span>requestURL<span class="p">,</span> isURL<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> addAttributeNamespaces<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#...other code...</span>
+</span><span class='line'>    <span class="p">},</span> error<span class="o">=</span><span class="kr">function</span><span class="p">(</span>err<span class="p">){</span>
+</span><span class='line'>        cat<span class="p">(</span><span class="s">&quot;xml parsing or http error:&quot;</span><span class="p">,</span> conditionMessage<span class="p">(</span>err<span class="p">),</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><a href="http://cran.r-project.org/web/packages/PBSmapping/index.html">PBSmapping</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>library<span class="p">(</span>PBSmapping<span class="p">)</span>
+</span><span class='line'>plotPolys<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Exploring Data Structures</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>as.numeric<span class="p">()</span>
+</span><span class='line'>level<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Color</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>head.colors<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>Ch.II Statistics of Foreclosure</h2>
+
+<ul>
+<li><p>Data is available at <a href="http://factfinder.census.gov/servlet/DCGeoSelectServlet?ds_name=DEC_2000_SF3_U">FactFinder</a></p></li>
+<li><p>skip lines when reading from file</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>read.table<span class="p">(</span><span class="s">&quot;FILE&quot;</span><span class="p">,</span> skip<span class="o">=</span><span class="m">1</span><span class="p">,</span> na.string<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Descriptive Statistics: <code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>cor()</code>, <code>summary()</code>.</p></li>
+<li><p>lattice</p>
+
+<pre><code>  library(lattice)
+  install.packages(latticsExtra)
+  library(latticeExtra)
+</code></pre>
+
+<ul>
+<li>plot: <code>stripplot()</code> + <code>bwplot()</code></li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>print<span class="p">(</span>stripplot<span class="p">(</span>IncomeLevels ~ jitter<span class="p">(</span>ct<span class="p">$</span>FCs<span class="p">),</span>
+</span><span class='line'>    main<span class="o">=</span>list<span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;Foreclures grouped by National Median Household Income&quot;</span><span class="p">,</span> cex<span class="o">=</span><span class="m">1</span><span class="p">),</span>
+</span><span class='line'>    sub<span class="o">=</span>list<span class="p">(</span><span class="s">&quot;Greater or less than $50,000&quot;</span><span class="p">,</span> cex<span class="o">=</span><span class="m">1</span><span class="p">),</span>
+</span><span class='line'>    xlab<span class="o">=</span><span class="s">&quot;foreclosures&quot;</span><span class="p">,</span>
+</span><span class='line'>    ylab<span class="o">=</span><span class="s">&quot;household median income&quot;</span><span class="p">,</span>
+</span><span class='line'>    aspect<span class="o">=</span><span class="m">.3</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;lightblue&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>as.layer<span class="p">(</span>bwplot<span class="p">(</span>IncomeLevels ~ ct<span class="p">$</span>FCs<span class="p">,</span> varwidth<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> box.ratio<span class="o">=</span><span class="m">0.4</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="s">&quot;|&quot;</span><span class="p">))</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Correlation</p>
+
+<p>  In R, we can create multidimensional correlation graphs using the <code>pairs()</code> scatterplot matrix package.</p></li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/19/n9/">N9, MeeGo, et al</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/08/go-lang-notes/">Go Lang Notes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/10/install-name-on-os-x/">install_name on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/remote-exposure/">Remote Exposure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/25-recipes-for-getting-started-with-r/">25 Recipes for Getting Started with R</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zyxar">@zyxar</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zyxar',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("zyxar", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zyxar" class="twitter-follow-button" data-show-count="false">Follow @zyxar</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Marcus Zy -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zyxar';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
