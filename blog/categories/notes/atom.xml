@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Notes | Mark's Logs]]></title>
+  <link href="http://zyxar.github.com/blog/categories/notes/atom.xml" rel="self"/>
+  <link href="http://zyxar.github.com/"/>
+  <updated>2013-02-14T00:49:54+08:00</updated>
+  <id>http://zyxar.github.com/</id>
+  <author>
+    <name><![CDATA[Marcus Zy]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[N9, MeeGo, et al]]></title>
+    <link href="http://zyxar.github.com/blog/2012/11/19/n9/"/>
+    <updated>2012-11-19T17:39:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/11/19/n9</id>
+    <content type="html"><![CDATA[<h2>Tools</h2>
+
+<ol>
+<li>Nokia Suite:
+
+<ul>
+<li>limited support, for backup and sync</li>
+<li>Contacts: cannot sync group</li>
+<li>only on <a href="http://nds1.nokia.com/files/support/global/phones/software/Nokia_Suite_webinstaller_ALL.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://nokia.com/nokialink">NokiaLink</a>:
+
+<ul>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.dmg">OS X</a></li>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://www.developer.nokia.com/Develop/Qt/Tools/">Qt SDK</a>
+
+<ul>
+<li>for OS X, Windows and Linux; online or offline</li>
+<li>Developer account required</li>
+</ul>
+</li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php">Flasher</a>
+
+<ul>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=MacFlasher_3.12.1.dmg">OS X</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_amd64.deb">Linux-x64</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_i386.deb">Linux-x86</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=WinFlasher_3.12.1.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://harmattan-dev.nokia.com/pool/">Repository</a>
+
+<ul>
+<li><a href="https://downloads.maemo.nokia.com">Official</a></li>
+<li><a href="http://my-meego.com/">My MeeGo</a></li>
+</ul>
+</li>
+</ol>
+
+
+<h2>Dev Mode</h2>
+
+<ul>
+<li>Settings -> Security -> Developer mode</li>
+</ul>
+
+
+<h2>Remove Native Apps?</h2>
+
+<ul>
+<li>Native apps for Chinese Mainland, such as <code>qunar</code>, <code>kaixin</code>, cannot be purged before applying some tricks.</li>
+<li>Package <code>mp-harmattan-003-pr</code> has dependencies on those apps, which if been removed, the phone would be frozen as a rock.</li>
+<li>This <a href="https://gitorious.org/mp-harmattan-003-pr/mp-harmattan-003-pr">site</a> provides a work round, a patched package.</li>
+</ul>
+
+
+<h2>Selected Apps</h2>
+
+<ol>
+<li>Foursquare: <a href="http://my-meego.com/downloads/sendfile.php?DownloadID=285">download</a> and <code>dpkg -i</code></li>
+<li>Skype: <code>apt-get install account-plugin-skype l10n-app-skype</code></li>
+<li>Gtalk: <code>apt-get install account-plugin-google-talk l10n-app-google</code></li>
+<li>Twitter: <code>apt-get install twitter l10n-app-twitter webupload-service-twitter</code></li>
+<li>Facebook: <code>apt-get install facebook l10n-app-facebook webupload-service-facebook</code></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

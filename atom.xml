@@ -1,0 +1,2103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Mark's Logs]]></title>
+  <link href="http://zyxar.github.com/atom.xml" rel="self"/>
+  <link href="http://zyxar.github.com/"/>
+  <updated>2013-02-14T00:49:54+08:00</updated>
+  <id>http://zyxar.github.com/</id>
+  <author>
+    <name><![CDATA[Marcus Zy]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[N9, MeeGo, et al]]></title>
+    <link href="http://zyxar.github.com/blog/2012/11/19/n9/"/>
+    <updated>2012-11-19T17:39:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/11/19/n9</id>
+    <content type="html"><![CDATA[<h2>Tools</h2>
+
+<ol>
+<li>Nokia Suite:
+
+<ul>
+<li>limited support, for backup and sync</li>
+<li>Contacts: cannot sync group</li>
+<li>only on <a href="http://nds1.nokia.com/files/support/global/phones/software/Nokia_Suite_webinstaller_ALL.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://nokia.com/nokialink">NokiaLink</a>:
+
+<ul>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.dmg">OS X</a></li>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://www.developer.nokia.com/Develop/Qt/Tools/">Qt SDK</a>
+
+<ul>
+<li>for OS X, Windows and Linux; online or offline</li>
+<li>Developer account required</li>
+</ul>
+</li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php">Flasher</a>
+
+<ul>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=MacFlasher_3.12.1.dmg">OS X</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_amd64.deb">Linux-x64</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_i386.deb">Linux-x86</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=WinFlasher_3.12.1.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://harmattan-dev.nokia.com/pool/">Repository</a>
+
+<ul>
+<li><a href="https://downloads.maemo.nokia.com">Official</a></li>
+<li><a href="http://my-meego.com/">My MeeGo</a></li>
+</ul>
+</li>
+</ol>
+
+
+<h2>Dev Mode</h2>
+
+<ul>
+<li>Settings -> Security -> Developer mode</li>
+</ul>
+
+
+<h2>Remove Native Apps?</h2>
+
+<ul>
+<li>Native apps for Chinese Mainland, such as <code>qunar</code>, <code>kaixin</code>, cannot be purged before applying some tricks.</li>
+<li>Package <code>mp-harmattan-003-pr</code> has dependencies on those apps, which if been removed, the phone would be frozen as a rock.</li>
+<li>This <a href="https://gitorious.org/mp-harmattan-003-pr/mp-harmattan-003-pr">site</a> provides a work round, a patched package.</li>
+</ul>
+
+
+<h2>Selected Apps</h2>
+
+<ol>
+<li>Foursquare: <a href="http://my-meego.com/downloads/sendfile.php?DownloadID=285">download</a> and <code>dpkg -i</code></li>
+<li>Skype: <code>apt-get install account-plugin-skype l10n-app-skype</code></li>
+<li>Gtalk: <code>apt-get install account-plugin-google-talk l10n-app-google</code></li>
+<li>Twitter: <code>apt-get install twitter l10n-app-twitter webupload-service-twitter</code></li>
+<li>Facebook: <code>apt-get install facebook l10n-app-facebook webupload-service-facebook</code></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Go Lang Notes]]></title>
+    <link href="http://zyxar.github.com/blog/2012/04/08/go-lang-notes/"/>
+    <updated>2012-04-08T14:50:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/04/08/go-lang-notes</id>
+    <content type="html"><![CDATA[<h2>TL;DR</h2>
+
+<h2>0. Resources</h2>
+
+<ul>
+<li><a href="http://godashboard.appspot.com/project">Go Dashboard</a></li>
+<li><a href="http://go-lang.cat-v.org">Go Lang SRC</a></li>
+<li><a href="http://tour.golang.org">tour.golang</a>, <a href="https://gist.github.com/2317744">solutions</a></li>
+<li><a href="https://gist.github.com/2317067">My first Go program</a></li>
+<li>PaaS: GAE, Heroku</li>
+</ul>
+
+
+<h2>I. Interaction with other language</h2>
+
+<h3>C</h3>
+
+<ul>
+<li><a href="http://golang.org/cmd/cgo">cgo</a>. Include C-libs or even valid C-code by placing these statements as comments <em>immediately</em> above the import &#8220;C&#8221; line:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="c1">//#include &lt;stdlib.h&gt; </span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;C&quot;</span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;unsafe&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>C.uint</code>, <code>C.long</code>, <code>C.random()</code>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">i</span> <span class="nb">int</span>
+</span><span class='line'><span class="n">C</span><span class="p">.</span><span class="nb">uint</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'><span class="nb">int</span><span class="p">(</span><span class="n">C</span><span class="p">.</span><span class="n">random</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Strings convertion: <code>C.CString(s)</code>, <code>C.GoString(cs)</code>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="n">cstring</span> <span class="p">:=</span> <span class="n">C</span><span class="p">.</span><span class="n">CString</span><span class="p">(</span><span class="n">gostring</span><span class="p">)</span>
+</span><span class='line'><span class="k">defer</span> <span class="n">C</span><span class="p">.</span><span class="n">free</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">cstring</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Memory allocations made by C code are not known to Go&#8217;s memory manager:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">defer</span> <span class="n">C</span><span class="p">.</span><span class="n">free</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">Cvariable</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Pseudo <strong>#cgo</strong> directives:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>hdfs.go</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">// #cgo linux CFLAGS: -I/opt/jdk/include -I/opt/jdk/include/linux</span>
+</span><span class='line'><span class="c1">// #cgo linux LDFLAGS: -Llib -lhdfs -L/opt/jdk/jre/lib/amd64/server -ljvm</span>
+</span><span class='line'><span class="c1">// #cgo darwin LDFLAGS: -L/usr/lib/java -lhdfs -framework JavaVM</span>
+</span><span class='line'><span class="c1">// #include &quot;hdfs.h&quot;</span>
+</span><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm">int getlen(char*** ptr) {</span>
+</span><span class='line'><span class="cm">    int i = 0;</span>
+</span><span class='line'><span class="cm">    while (ptr[i] != NULL) ++i;</span>
+</span><span class='line'><span class="cm">    return i;</span>
+</span><span class='line'><span class="cm">}</span>
+</span><span class='line'><span class="cm">int getl(char*** ptr) {</span>
+</span><span class='line'><span class="cm">    int i = 0;</span>
+</span><span class='line'><span class="cm">    while (ptr[0][i] != NULL) ++i;</span>
+</span><span class='line'><span class="cm">    return i;</span>
+</span><span class='line'><span class="cm">}</span>
+</span><span class='line'><span class="cm">char* getstring(char*** ptr, int i, int j) {</span>
+</span><span class='line'><span class="cm">    return ptr[i][j];</span>
+</span><span class='line'><span class="cm">}</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;C&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Pointer arithmetic:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">p</span> <span class="p">*</span><span class="n">C</span><span class="p">.</span><span class="n">hdfsFileInfo</span>
+</span><span class='line'><span class="n">p</span> <span class="p">=</span> <span class="p">(*</span><span class="n">C</span><span class="p">.</span><span class="n">hdfsFileInfo</span><span class="p">)(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="nb">uintptr</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">info</span><span class="p">))</span> <span class="p">+</span> <span class="nb">uintptr</span><span class="p">(</span><span class="n">i</span><span class="p">)*</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Sizeof</span><span class="p">(</span><span class="n">C</span><span class="p">.</span><span class="n">hdfsFileInfo</span><span class="p">{})))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>C++</h3>
+
+<ul>
+<li><p>SWIG (Simplified Wrapper and Interface Generator) supports for calling C++/C code from Go on Linux.</p>
+
+<ul>
+<li>Write the SWIG interface file for the lib to be wrapped</li>
+<li>SWIG generates the C stub functions</li>
+<li>called using the <code>cgo</code> machinery</li>
+</ul>
+</li>
+<li><p>SWIG does <em>NOT</em> understand all of C++.</p></li>
+</ul>
+
+
+<h2>II. Basic constructs and elementary data types</h2>
+
+<h3>Filenames, Keywords, Identifiers</h3>
+
+<ul>
+<li>Filenames may not contain spaces or any other special chars.</li>
+<li>Identifiers: valid if begin with a letter (even Unicode) and followed by 0 or more letters or Unicode digits.</li>
+<li><code>_</code> is <em>blank identifier</em>.</li>
+<li><em>anonymous</em></li>
+<li>25 <em>keywords</em> or reserved words:
+  <code>break</code>, <code>case</code>, <code>chan</code>, <code>const</code>, <code>continue</code>, <code>default</code>, <code>defer</code>, <code>else</code>, <code>fallthrough</code>, <code>for</code>, <code>func</code>, <code>go</code>, <code>goto</code>, <code>if</code>, <code>import</code>, <code>interface</code>, <code>map</code>, <code>package</code>, <code>range</code>, <code>return</code>, <code>select</code>, <code>struct</code>, <code>switch</code>, <code>type</code>, <code>var</code></li>
+<li>36 <em>predeclared identifiers</em>:
+  <code>append</code>, <code>bool</code>, <code>byte</code>, <code>cap</code>, <code>close</code>, <code>complex</code>, <code>complex64</code>, <code>complex128</code>, <code>copy</code>, <code>false</code>, <code>float32</code>, <code>float64</code>, <code>imag</code>, <code>int</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>, <code>iota</code>, <code>len</code>, <code>make</code>, <code>new</code>, <code>nil</code>, <code>panic</code>, <code>print</code>, <code>println</code>, <code>real</code>, <code>recover</code>, <code>string</code>, <code>true</code>, <code>uint</code>, <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code>, <code>uintptr</code></li>
+<li>Used punctuation chars: <code>.</code>,<code>,</code>,<code>;</code>,<code>:</code>,<code>...</code></li>
+<li>Used delimiters: <code>()</code>, <code>[]</code>, <code>{}</code></li>
+<li>Automatic semicolon insertion. However, multiple statements must be seperated by <code>;</code> on one line.</li>
+</ul>
+
+
+<h3>Basic structure and components</h3>
+
+<h4>Packages, import and visibility</h4>
+
+<ul>
+<li>Every go-file belongs to one (and only one) <em>package</em>. Many different <code>.go</code> files can belong to one <em>package</em>.</li>
+<li>Package must be indicated on the first line. A standalone exec belongs to package <strong>main</strong>; each go app contains one package <em>main</em>; a package name is written in <strong>lowercase</strong> letters.</li>
+<li>Package is compiled as a unit; each dir contains one package by convetion.</li>
+<li><em>Every piece of code is compiled only once</em>.</li>
+<li>Apart from <code>_</code>, Ids of code-objs have to be unique in a package.</li>
+<li><p><strong>Visibility Rule</strong>:</p>
+
+<ul>
+<li>Id start with an uppercase, then the &#8216;obj&#8217; with this identifier is <em>visible</em> in code outside the package: <em>exported</em>, like <em>public</em> in OO.</li>
+<li>Id start with a lowercase are not visible outside the package: like <em>private</em>.</li>
+</ul>
+</li>
+<li><p>alias package: <code>import fm "fmt"</code></p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h4>Functions</h4>
+
+<ul>
+<li><code>func main</code> must have no arguments and no return values results.</li>
+<li>the first <code>{</code> must be on the same line as the func-declaration.</li>
+<li>the last <code>}</code> is positioned after the function-code in the column beneath <strong>f</strong>unction.</li>
+<li>Every package <em>should</em> have a <em>package comment</em>, a block comment immediately preceding the package statement.</li>
+<li>Nearly every top-level type, const, var and func, and certainly every exported name in a program should have a comment: <em>doc comment</em>, starts with the name.</li>
+</ul>
+
+
+<h4>Types</h4>
+
+<ul>
+<li>Types can be <em>elementary</em>, <em>structured</em>, and <em>interfaces</em>.</li>
+<li><code>nil</code>: value for structured type which has no real value; also the default value.</li>
+<li>There is no type-hierarchy.</li>
+<li>A function can <em>return more than one variable</em>.</li>
+<li><strong>GO is a <em>statically typed</em> language</strong>.</li>
+<li><p><em>order of execution</em></p>
+
+<ul>
+<li>all packages in package main are imported in the order as indicated, in every package;</li>
+<li>recursively imports packages, but a certain package is imported only once;</li>
+<li>for every package (in reverse order) all constants and variables are evaluated, and <code>init()</code> if exists;</li>
+<li>at last the package main; then <code>main()</code> starts executing.</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>About naming</h4>
+
+<ul>
+<li>Names of things in Go should be short, concise, evocative;</li>
+<li>Names should not contain an indication of the package;</li>
+<li>Use MixedCaps or mixedCaps rather than underscores;</li>
+<li>No <code>Get...()</code>; but <code>SetName()</code></li>
+</ul>
+
+
+<h4>Constants</h4>
+
+<ul>
+<li>Can only be of type <em>boolean</em>, <em>number</em>, or <em>string</em>.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">const</span> <span class="n">identifier</span> <span class="p">[</span><span class="k">type</span><span class="p">]</span> <span class="p">=</span> <span class="n">value</span> <span class="c1">// type is optinal</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Constants must be evaluated at compile time.</li>
+<li>Constants can be used for <em>enumerations</em>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">const</span> <span class="p">(</span>
+</span><span class='line'>    <span class="n">Unkonwn</span> <span class="p">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="n">Female</span>  <span class="p">=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="n">Male</span>    <span class="p">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>So does the value <code>iota</code>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">const</span> <span class="p">(</span>
+</span><span class='line'>    <span class="n">a</span> <span class="p">=</span> <span class="n">iota</span>
+</span><span class='line'>    <span class="n">b</span> <span class="c1">//= iota</span>
+</span><span class='line'>    <span class="n">c</span> <span class="c1">//= iota</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>A new const block or declaration initializes <code>iota</code> back to 0.</li>
+</ul>
+
+
+<h3>Variables</h3>
+
+<ul>
+<li><em>all memory in Go is initialized</em>.</li>
+<li>if the variable has to be exported, it must start with a capital letter.</li>
+<li>variable <em>scope</em>: global/package scope; local scope.</li>
+<li>declaration: <code>var a int</code>, <code>a := 1</code></li>
+<li>all vars of elementary types (int, float, bool, string, &#8230;) are <em>value</em> types, in <em>stack</em> memory.</li>
+<li>more complex data which usually needs several words are treated as <em>reference types</em>.</li>
+<li><em>pointers</em> are <em>reference types</em>, as well as <em>slices</em>, <em>maps</em>, and <em>channels</em>.</li>
+<li>vars that are referenced are stored in the <em>heap</em>, where gc works.</li>
+<li><p>Printing:</p>
+
+<ul>
+<li><code>fmt.Printf()</code>: <code>%s</code>, <code>%v</code></li>
+<li><code>fmt.Sprintf()</code>: return formatted string</li>
+<li><code>fmt.Print()</code>, <code>fmt.Println()</code>: automatic formatting</li>
+</ul>
+</li>
+<li><p><code>:=</code> can only be used inside functions, not in package scope.</p></li>
+<li>blank identifier <code>_</code> can also be used to throw away values: <code>_, b = 5, 7</code></li>
+<li><p><code>init()</code>:</p>
+
+<ul>
+<li>every source file can contain only <strong>1</strong> init() function</li>
+<li>initialization is always single-threaded and package dependency guarantees correct exec order</li>
+<li>used to verify or repair correctness of the program state before real exec begions</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Elementary types and operators</h3>
+
+<ul>
+<li>must be explicit conversion: Go is <em>strongly typed</em></li>
+<li>no operator overloading</li>
+<li>an expression is by default evaluated from <strong>left to right</strong></li>
+<li><p>format specifier:</p>
+
+<ul>
+<li><code>%t</code> -> booleans</li>
+<li><code>%d</code>, <code>%x</code>, <code>%X</code> -> integers</li>
+<li><code>%g</code> -> float; <code>%f</code> -> floating point, <code>%e</code> -> scientific notation; also <code>%n.mg</code>, <code>%n.me</code>, <code>%n.mf</code></li>
+<li><code>%b</code> -> bit-representations</li>
+<li><code>%U</code> -> UTF-8 code point: <em>U+hhhh</em> notation</li>
+<li><code>%p</code> -> pointer representation</li>
+<li><code>%T</code> -> complete type specification</li>
+<li><code>%#v</code> -> complete output of the instance with its fields</li>
+</ul>
+</li>
+<li><p><code>int</code>, <code>uint</code>, <code>uintptr</code> are <em>architecture dependent types</em>; but no <code><del>float</del></code> type</p></li>
+<li><strong>comlex number</strong>: <code>real(c)</code>, <code>imag(c)</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">c1</span> <span class="n">complex64</span> <span class="p">=</span> <span class="mi">5</span> <span class="p">+</span> <span class="mi">10</span><span class="n">i</span>
+</span><span class='line'><span class="n">fmt</span><span class="p">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>&amp;^</code> -> force a specified bit to 0</li>
+<li>no error is generated when an <em>overflow</em> occurs during an arithmetic operation</li>
+<li>pseudo random numbers: <code>rand.Int()</code>, <code>rand.Intn(n)</code>, <code>rand.Float32()</code>, <code>rand.Float64()</code>, <code>rand.Seed(sd)</code></li>
+<li><p><strong>operator precedence</strong>:</p>
+
+<pre><code>  ^ !
+  * / % &lt;&lt; &gt;&gt; &amp; &amp;^
+  + - | ^
+  == != &lt; &lt;= &gt;= &gt;
+  &lt;-
+  &amp;&amp;
+  ||
+</code></pre></li>
+<li><p><strong>character</strong>: <code>var ch byte = '\x41'</code>, <code>var ch int = '\u0041'</code>, <code>var ch int = '\U00101234'</code></p></li>
+<li>type <code>rune</code> an alias for type <code>int32</code>, for Unicode</li>
+<li><p><strong>strings</strong> are a sequence of UTF-8 characters, <em>value</em> types and <em>immutable</em> arrays of bytes.</p>
+
+<ul>
+<li>interpreted strings: surrounded by <code>"intr string"</code></li>
+<li>raw strings surrounded by <code>`raw string`</code></li>
+<li>length-delimited and do not terminate by a special char as in C/C++; <code>len(str)</code></li>
+<li>default value is <em>empty</em>: <code>""</code></li>
+<li><code>&amp;str[i]</code> is illegal</li>
+<li>concatenating strings: <code>+</code>, <code>strings.Join()</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h3><code>strings</code> and <code>strconv</code> package</h3>
+
+<ul>
+<li><code>strings.IndexRune(s string, ch int)</code> for non-ASCII character</li>
+<li><code>strings.HasPrefix(s, prefix string)</code>, <code>strings.HasSuffix(s, suffix string)</code></li>
+<li><code>strings.Contains(s, substr string)</code></li>
+<li><code>strings.Index(s, str string)</code>, <code>strings.LastIndex(s, str string)</code></li>
+<li><code>strings.Replace(str, old, new, n)</code>, if <code>n = -1</code> all occurrences are replaced</li>
+<li><code>strings.Repeat(s string, count int)</code></li>
+<li><code>strings.ToLower()</code>, <code>strings.ToUpper()</code></li>
+<li><code>strings.TrimSpace(s)</code>, <code>strings.Trim(s, "\r\n")</code>, <code>strings.TrimLeft()</code>, <code>strings.TrimRight()</code></li>
+<li><code>strings.Fields(s)</code>, <code>strings.Split(s, sep)</code></li>
+<li><code>strings.Join(s1 []string, sep string)</code></li>
+<li><code>strings.NewReader(str)</code> -> <code>r.Read()</code> read a []byte; <code>r.ReadByte()</code> <code>r.ReadRune()</code> read next byte or rune</li>
+<li>to convert a variable of a certain type <code>T</code> to a string will always succeed: <code>strconv.Itoa()</code>, <code>strconv.FormatFloat()</code></li>
+</ul>
+
+
+<h3>times and dates</h3>
+
+<ul>
+<li>package <strong>time</strong>, datatype <code>time.Time</code>, type <code>Duration</code>, type <code>Location</code></li>
+<li><code>time.Now()</code>, <code>t.Day()</code>, <code>t.Add()</code>, etc.</li>
+<li><code>time.After</code>, <code>time.Ticker</code>, <code>time.Sleep(Duration d)</code></li>
+<li><code>time.Unix()</code></li>
+</ul>
+
+
+<h3>Pointers</h3>
+
+<ul>
+<li><code>&amp;</code> <em>address of</em></li>
+<li><code>*</code> <em>type modifier</em>, <em>dereference</em></li>
+<li>cannot take the address of a literal or a constant</li>
+<li><em>pointer arithmetic</em> is <strong>NOT</strong> allowed</li>
+<li><code>nil</code> pointer dereference is illegal</li>
+</ul>
+
+
+<h2>III. Control structures and Functions</h2>
+
+<ul>
+<li><p><code>if else</code></p>
+
+<ul>
+<li>the <code>else if</code> and <code>else</code> keywords must be on the same line as the closing <code>}</code></li>
+<li>idiom: omit the else-clause when the if ends in a <code>break</code>, <code>continue</code>, <code>goto</code> or <code>return</code> statement</li>
+<li>do not use if/else with a return in both branches</li>
+<li><code>if val := xxx; val &gt; yyy { ... }</code></li>
+</ul>
+</li>
+<li><p><code>switch case</code></p>
+
+<ul>
+<li><code>break</code> is implicit</li>
+<li>keyword <code>fallthrough</code></li>
+<li><code>case val1, val2, val3:</code></li>
+<li>when the case-statements ends with a <code>return</code> statement, there also has to be a <code>return</code> statement after the <code>}</code> of the switch.</li>
+<li><em>type-switch</em>: [see details in interface section]</li>
+</ul>
+</li>
+<li><p><code>for (range)</code></p>
+
+<ul>
+<li><code>for ix, val := range coll {}</code></li>
+<li><code>val</code> here is a copy of the value at that index in the collection, so it can only be used in read purpose;</li>
+</ul>
+</li>
+<li><p>Infinite loops: <code>for {}</code></p></li>
+<li><p>Condition controlled iteration: <code>for condition {}</code></p></li>
+<li><p><code>break</code>/<code>continue</code></p>
+
+<ul>
+<li>a break statement always breaks out of the innermost structure in which it occurs; execution continues after the ending <code>}</code> of that structure;</li>
+<li><code>continue</code> skips the remaining part of the loop, but the next iteration.</li>
+</ul>
+</li>
+<li><p>Label/<code>goto</code></p>
+
+<ul>
+<li>discouraged.</li>
+<li>do not declare any new variables between the goto and the label.</li>
+</ul>
+</li>
+<li><p><code>select</code> for switching between channels</p></li>
+<li><p>Starting an external command or program: <code>os</code> and <code>os/exec</code> package</p></li>
+</ul>
+
+
+<h2>IV. Arrays and Slices</h2>
+
+<h3>Arrays</h3>
+
+<ul>
+<li>An array is a numbered and fixed-length sequence of data items of the same single-type.</li>
+<li>Length must be a constant expression, non-negative integer value; it is part of the type of the array, e.g. <code>[2]int</code>.</li>
+<li>Arrays are mutable.</li>
+<li>An array is a value type, (not a pointer to the first element like in C/C++), and can be created with <code>new()</code>.</li>
+<li><p>Array literals:</p>
+
+<ol>
+<li><code>var arrAge = [5]int{1, 2, 3, 4, 5}</code></li>
+<li><code>var arrAge = [...]int{1, 2, 3, 4, 5}</code></li>
+<li><code>var arrKV = [5]string{3: "Andy", 4: "Ken"}</code></li>
+</ol>
+</li>
+<li><p>Arrays are always 1-dimensional, but may be composed to form multidimensional arrays: <code>[3][5]int</code>;</p></li>
+<li>The inner arrays have always the same length; Multidimensional arrays are <em>rectangular</em>, except <em>arrays of slices</em>.</li>
+</ul>
+
+
+<h3>Slices</h3>
+
+<ul>
+<li>A slice is a reference to a contiguous segment of an array (the underlying array).</li>
+<li>Slice is a reference type.</li>
+<li>Slice provide a dynamic window onto the underlying array: <code>slice[a:b]</code>, b is not included in the slice.</li>
+<li>A slice is a variable-length array.</li>
+<li><code>len()</code>, <code>cap()</code></li>
+<li>A slice in memory is in fact a struct with 3 fields: a pointer to the underlying array, the length of the slice, and the capacity of the slice.</li>
+<li>Create a slice with <code>make()</code></li>
+<li>Slices of slices: the lengths may be vary dynamically, <em>jagged</em>.</li>
+<li>Inner slices must be allocated individually, with <code>make()</code></li>
+<li><code>func append(s []T, x ...T) []T</code>: allocate a new, sufficiently large slice.</li>
+<li><code>func copy(dst, src []T) int</code></li>
+<li>make a slice of bytes from string: <code>c := []byte(s)</code></li>
+</ul>
+
+
+<h2>V. Maps</h2>
+
+<ul>
+<li>A map is a reference type: <code>var map1 map[keytype]valuetyep</code></li>
+<li>The length does not have to be known at declaration, but can grow dynamically.</li>
+<li>Key type can be any type for which the operations <code>==</code> and <code>!=</code> are defined.</li>
+<li>Value type can be any type, even a func() type:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="n">mf</span> <span class="p">:=</span> <span class="k">map</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="k">func</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="mi">1</span><span class="p">:</span> <span class="k">func</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="p">},</span>
+</span><span class='line'>    <span class="mi">2</span><span class="p">:</span> <span class="k">func</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">20</span> <span class="p">},</span>
+</span><span class='line'>    <span class="mi">5</span><span class="p">:</span> <span class="k">func</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">50</span> <span class="p">},</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">mf</span><span class="p">[</span><span class="mi">2</span><span class="p">]()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Arrays, slices and structs cannot be used as key type, but pointers and interface type can.</li>
+<li>One way to use structs as a key is to provide them with a Key() or Hash() method.</li>
+<li>Map indexing is much faster than a linear search; but still 100x slower than direct array or slice indexing.</li>
+<li>Create maps by <code>make()</code>, never <code>new()</code>.</li>
+<li>Capacity: <code>make(map[key]value, cap)</code></li>
+<li>Test if a key-value exists in a map: <code>_, exists := map1[key1]</code></li>
+<li>Remove: <code>delete(map1, key1)</code></li>
+<li>for-range to get all keys or values.</li>
+<li>If the value type of a map is acceptable as a key type, and the map values are unique, inverting can be done easily, via for-range.</li>
+</ul>
+
+
+<h2>VI. Packages</h2>
+
+<ul>
+<li>import &#8220;path or url to the package&#8221;</li>
+<li>By convention, each package (all the go files belonging to it) resides in its own subdirectory, which has the same name as the package.</li>
+<li><code>import . "packa"</code>: use items from the package &#8216;packa&#8217; without qualifying with the package name;</li>
+<li><code>import _ "packa"</code>: imported for side-effects only, the init functions are executed and global variables initialized;</li>
+<li>import external packages: <code>go get URL</code>, installed at <code>$GOPATH/src/</code> or <code>$GOROOT/src/</code>, then call <code>go install URL</code></li>
+<li><code>import goex "codesite.ext/author/GoExample/goex"</code></li>
+<li>Use <code>go doc</code> for custom packages</li>
+</ul>
+
+
+<h2>VII. Methods</h2>
+
+<ul>
+<li>Method is a function that acts an variable of a certain type, called <em>receiver</em>.</li>
+<li>The receiver can be almost anything: even a function type or alias type for int, bool, string or array.</li>
+<li>The receiver cannot be an interface type.</li>
+<li>The receiver cannot be a pointer type, but it can be a pointer to any of the allowed types.</li>
+<li>An alias of a certain type <em>*doesn&#8217;t have</em> the methods defined on that type.</li>
+<li>If the method does not need to use the value recv, discard it by <code>_</code>.</li>
+<li>A method and the type on which it acts must be defined in the same package. Use an <em>alias</em> type, or <code>struct</code> instead.</li>
+<li>The receiver must have an explicit name, and this name must be used in the method.</li>
+<li>The receiver type is called the <em>(receiver) base type</em>; it must be declared within the same package as all of its methods</li>
+<li>If for a type T a method Meth() exists on *T and t is a variable of type T, then <code>t.Meth()</code> is automatically translated to <code>(&amp;t).Meth()</code>.</li>
+<li>Pointer and value methods can both be called on pointer or non-pointer values.</li>
+<li>It should not be possible that the fields of an object can be changed by 2 or more different threads at the same time. Use methods of the package <em>sync</em>.</li>
+<li>When an anonymous type is embedded in a struct, the <strong>visible</strong> methods of that type are inherited by the outer type:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">type</span> <span class="n">Point</span> <span class="k">struct</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="nb">float64</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="p">(</span><span class="n">p</span> <span class="p">*</span><span class="n">Point</span><span class="p">)</span> <span class="n">Abs</span><span class="p">()</span> <span class="nb">float64</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">math</span><span class="p">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="p">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">type</span> <span class="n">NamedPoint</span> <span class="k">struct</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">Point</span>
+</span><span class='line'>    <span class="n">name</span> <span class="nb">string</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">n</span> <span class="p">:=</span> <span class="p">&amp;</span><span class="n">NamedPoint</span><span class="p">{</span><span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},</span> <span class="s">&quot;Pythagoras&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">Abs</span><span class="p">())</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>A method in the embedding type with the same name as a method in an embedded type overrides this.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">func</span> <span class="p">(</span><span class="n">n</span> <span class="p">*</span><span class="n">NamedPoint</span><span class="p">)</span> <span class="n">Abs</span><span class="p">()</span> <span class="nb">float64</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">n</span><span class="p">.</span><span class="n">Point</span><span class="p">.</span><span class="n">Abs</span><span class="p">()</span> <span class="p">*</span> <span class="mi">100</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Embedding multiple anonymous types -> <em>multiple inheritance</em>.</li>
+<li>Structs embedding structs from the same package have all access to one another&#8217;s fields and methods.</li>
+<li><p>Embed functionality in a type:</p>
+
+<ul>
+<li><em>Aggregation/composition</em>: include a named field of the type of the wanted functionality</li>
+<li><em>Embedding</em>: anonymously embed the type of the wanted functionality</li>
+</ul>
+</li>
+<li><p><code>String()</code> method:</p>
+
+<ul>
+<li>do not make mistake of defining <code>String()</code> in terms of itself -> infinite recursion.</li>
+</ul>
+</li>
+<li><p>Summarzed: in Go types are basically classes. Go does not know inheritance like class oriented OO languages.</p></li>
+<li>More OO capabilities: <a href="https://github.com/losalamos/goop">goop</a> provides Go with JavaScript-style objects but supports multiple inheritance and type-dependent dispatch.</li>
+<li>Suppose special action needs to be taken right before an object <em>obj</em> is removed from memory (gc), like writing to a log-file, achieved by:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="n">runtime</span><span class="p">.</span><span class="n">SetFinalizer</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="k">func</span><span class="p">(</span><span class="n">obj</span> <span class="p">*</span><span class="n">typeObj</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>SetFinalizer</code> does not execute when the program comes to an normal end or when an error occurs, before the object was chosen by the gc process to be removed.</li>
+</ul>
+
+
+<h2>VIII. Interface</h2>
+
+<h3>Polymorphism</h3>
+
+<ul>
+<li>An interface defines <em>abstract method set</em>, but cannot contain variables;</li>
+<li><p>Interface internal:</p>
+
+<pre><code>  +------------+------------+
+  |            |   method   | 
+  |  receiver  |   table    |
+  |            |   pointer  |
+  +------------+------------+
+</code></pre>
+
+<ul>
+<li>Thus, pointers to interface values are illegal.</li>
+<li>Table of method pointers is built through runtime reflection capability.</li>
+</ul>
+</li>
+<li><p>Multiple types can implement the same interface;</p></li>
+<li>A type that implements an interface can also have other methods;</li>
+<li>A type cam implements many interface;</li>
+<li>An interface type can contain a reference to an instance of any of the types that implement the interface: <em>dynamic type</em>;</li>
+<li>Interface embedding interface(s): enumerating the methods;</li>
+<li><p>type assertions:</p>
+
+<ul>
+<li><code>v := varI.(T) // unchecked type assertion</code></li>
+<li><code>if v, ok := varI.(T); ok {...} // checked type assertion</code></li>
+<li><code>varI</code> must be an interface variable.</li>
+<li>testing if a value implements an interface.</li>
+</ul>
+</li>
+<li><p>type switch:</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">switch</span> <span class="n">t</span> <span class="p">:=</span> <span class="k">var</span><span class="p">.(</span><span class="k">type</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// t can be omited</span>
+</span><span class='line'><span class="k">case</span> <span class="n">a</span><span class="p">:</span>
+</span><span class='line'>    <span class="c1">//</span>
+</span><span class='line'><span class="k">case</span> <span class="n">b</span><span class="p">:</span>
+</span><span class='line'>    <span class="c1">//</span>
+</span><span class='line'><span class="k">default</span><span class="p">:</span>
+</span><span class='line'>    <span class="c1">//</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>An interface value can also be assigned to another interface value, as long as the underlying value implements the necessary methods.</p></li>
+<li><p>Summarized:</p>
+
+<ul>
+<li>Pointer methods can be called with pointers;</li>
+<li>Value methods can be called with values;</li>
+<li>Value-receiver methods can be called with pointer values because they can be dereferenced first.</li>
+<li>Pointer-receiver methods <strong>cannot</strong> be called with values, because the value stored inside an interface has no address.</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Empty Interface</h3>
+
+<ul>
+<li>The <em>empty interface</em> has no methods: <code>type Any interface{}</code>.</li>
+<li>Any variable, any type implements it.</li>
+<li>It can through assignment receive a variable of <strong>any</strong> type.</li>
+<li>Each <code>interface{}</code> takes up 2 words in memory: one word for the type, the other word for either value or pointer to value.</li>
+<li>Can perform templates role in container.</li>
+<li>copying a data-slice in a slice of interface{} <a href="http://code.google.com/p/go-wiki/wiki/InterfaceSlice">dose not work</a>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">dataslice</span> <span class="p">[]</span><span class="n">myType</span> <span class="p">=</span> <span class="n">getSlice</span><span class="p">()</span>
+</span><span class='line'><span class="k">var</span> <span class="n">interfaceSlice</span> <span class="p">[]</span><span class="k">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="n">dataslice</span>
+</span><span class='line'><span class="c1">// must be done explicitly with for-range, e.g.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>Overloading</strong> functions: <code>func DoSomething(f int, a ...interface{}) (n int, errno error)</code></li>
+</ul>
+
+
+<h3>Dynamic typing</h3>
+
+<ul>
+<li>In Go, methods and data are treated <em>orthogonally</em>, loosely coupled.</li>
+<li><em>duck typing</em> in dynamic languages like Python and Ruby.</li>
+<li>However, the implementation requirements is <em>statically checked by the compiler</em>;</li>
+</ul>
+
+
+<h3>Object-orientedness of Go: summary</h3>
+
+<ol>
+<li><p>Encapsulation:</p>
+
+<ul>
+<li>only 2 access-levels: <em>package scope</em>, and <em>exported</em>;</li>
+<li>a type can only have methods defined in its own package;</li>
+</ul>
+</li>
+<li><p>Inheritance: embedding of one or more types;</p></li>
+<li><p>Polymorphism: through interface.</p></li>
+</ol>
+
+
+<h2>IX. Reflection</h2>
+
+<h3>Metaprogramming</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">func</span> <span class="n">TypeOf</span><span class="p">(</span><span class="n">i</span> <span class="k">interface</span><span class="p">{})</span> <span class="n">Type</span>
+</span><span class='line'><span class="k">func</span> <span class="n">ValueOf</span><span class="p">(</span><span class="n">i</span> <span class="k">interface</span><span class="p">{})</span> <span class="n">Value</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>Kind()</code> function and kind constants;</li>
+<li><code>Interface()</code> recovers the (interface) value;</li>
+<li><p>Modifying a value through reflection:</p>
+
+<ul>
+<li><code>CanSet()</code> -> settability;</li>
+<li><code>v := reflect.ValueOf(x)</code> creates a copy of x;</li>
+<li>to change value of x, must pass the address of x: <code>v := reflect.ValueOf(&amp;x)</code></li>
+<li>to make it settable: <code>v = v.Elem()</code></li>
+</ul>
+</li>
+<li><p>Reflection on structs:</p>
+
+<ul>
+<li><code>NumField()</code> gives the number of fields in the struct;</li>
+<li>call its methods with <code>Method(n).Call(nil)</code>;</li>
+<li>only exported fields of a struct are settable;</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Reflection with <code>unsafe</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">var</span> <span class="n">byteSliceType</span> <span class="p">=</span> <span class="n">reflect</span><span class="p">.</span><span class="n">TypeOf</span><span class="p">(([]</span><span class="nb">byte</span><span class="p">)(</span><span class="n">nil</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">AsByteSlice</span><span class="p">(</span><span class="n">x</span> <span class="k">interface</span><span class="p">{})</span> <span class="p">[]</span><span class="nb">byte</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">v</span> <span class="p">:=</span> <span class="n">reflect</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="n">reflect</span><span class="p">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">h</span> <span class="p">:=</span> <span class="p">*(*</span><span class="n">reflect</span><span class="p">.</span><span class="n">SliceHeader</span><span class="p">)(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">UnsafeAddr</span><span class="p">()))</span>
+</span><span class='line'>    <span class="n">size</span> <span class="p">:=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">Type</span><span class="p">().</span><span class="n">Elem</span><span class="p">().</span><span class="n">Size</span><span class="p">())</span>
+</span><span class='line'>    <span class="n">h</span><span class="p">.</span><span class="n">Len</span> <span class="p">*=</span> <span class="n">size</span>
+</span><span class='line'>    <span class="n">h</span><span class="p">.</span><span class="n">Cap</span> <span class="p">*=</span> <span class="n">size</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">unsafe</span><span class="p">.</span><span class="n">Unreflect</span><span class="p">(</span><span class="n">byteSliceType</span><span class="p">,</span> <span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(&amp;</span><span class="n">h</span><span class="p">)).([]</span><span class="nb">byte</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">// but in Go1 Unreflect are gone?</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// or, if you prefer:</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">AsByteSlice</span><span class="p">(</span><span class="n">x</span> <span class="k">interface</span><span class="p">{})</span> <span class="p">[]</span><span class="nb">byte</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">v</span> <span class="p">:=</span> <span class="n">reflect</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="n">reflect</span><span class="p">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">h0</span> <span class="p">:=</span> <span class="p">(*</span><span class="n">reflect</span><span class="p">.</span><span class="n">SliceHeader</span><span class="p">)(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">UnsafeAddr</span><span class="p">()))</span>
+</span><span class='line'>    <span class="n">size</span> <span class="p">:=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">Type</span><span class="p">().</span><span class="n">Elem</span><span class="p">().</span><span class="n">Size</span><span class="p">())</span>
+</span><span class='line'>    <span class="n">h</span> <span class="p">:=</span> <span class="n">reflect</span><span class="p">.</span><span class="n">SliceHeader</span><span class="p">{</span><span class="n">h0</span><span class="p">.</span><span class="n">Data</span><span class="p">,</span> <span class="n">h0</span><span class="p">.</span><span class="n">Len</span> <span class="p">*</span> <span class="n">size</span><span class="p">,</span> <span class="n">h0</span><span class="p">.</span><span class="n">Cap</span> <span class="p">*</span> <span class="n">size</span><span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">unsafe</span><span class="p">.</span><span class="n">Unreflect</span><span class="p">(</span><span class="n">byteSliceType</span><span class="p">,</span> <span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(&amp;</span><span class="n">h</span><span class="p">)).([]</span><span class="nb">byte</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3><a href="http://code.google.com/p/go-wiki/wiki/cgo">Turning C arrays into Go slices</a></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">func</span> <span class="n">C</span><span class="p">.</span><span class="n">GoBytes</span><span class="p">(</span><span class="n">cArray</span> <span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">,</span> <span class="n">length</span> <span class="n">C</span><span class="p">.</span><span class="nb">int</span><span class="p">)</span> <span class="p">[]</span><span class="nb">byte</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To create a Go slice backed by a C array (without copying the original data), one needs to acquire this length at runtime and use <code>reflect.SliceHeader</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">import</span> <span class="s">&quot;C&quot;</span>
+</span><span class='line'><span class="k">import</span> <span class="s">&quot;unsafe&quot;</span>
+</span><span class='line'><span class="c1">//...</span>
+</span><span class='line'>        <span class="k">var</span> <span class="n">theCArray</span> <span class="p">*</span><span class="n">TheCType</span> <span class="p">:=</span> <span class="n">C</span><span class="p">.</span><span class="n">getTheArray</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">length</span> <span class="p">:=</span> <span class="n">C</span><span class="p">.</span><span class="n">getTheArrayLength</span><span class="p">()</span>
+</span><span class='line'>        <span class="k">var</span> <span class="n">theGoSlice</span> <span class="p">[]</span><span class="n">TheCType</span>
+</span><span class='line'>        <span class="n">sliceHeader</span> <span class="p">:=</span> <span class="p">(*</span><span class="n">reflect</span><span class="p">.</span><span class="n">SliceHeader</span><span class="p">)((</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(&amp;</span><span class="n">theGoSlice</span><span class="p">)))</span>
+</span><span class='line'>        <span class="n">sliceHeader</span><span class="p">.</span><span class="n">Cap</span> <span class="p">=</span> <span class="n">length</span>
+</span><span class='line'>        <span class="n">sliceHeader</span><span class="p">.</span><span class="n">Len</span> <span class="p">=</span> <span class="n">length</span>
+</span><span class='line'>        <span class="n">sliceHeader</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="nb">uintptr</span><span class="p">(</span><span class="n">unsafe</span><span class="p">.</span><span class="n">Pointer</span><span class="p">(&amp;</span><span class="n">theCArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</span><span class='line'>        <span class="c1">// now theGoSlice is a normal Go slice backed by the C array</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It is important to keep in mind that the Go garbage collector will not interact with this data, and that if it is freed from the C side of things, the behavior of any Go code using the slice is nondeterministic.</p>
+
+<h2>X. Error-handling and Testing</h2>
+
+<ul>
+<li>Always assign an error to a variable within a compound if-statement, making for clearer code.</li>
+<li>Predefined error interface type: <code>type error interface { Error() string }</code>.</li>
+<li>Package <code>errors</code>; function <code>fmt.Errorf()</code>.</li>
+<li><code>syscall.Errno</code>; <code>os.EPERM</code>, etc.</li>
+</ul>
+
+
+<h3><em>defer-panic-and-recover</em> machanism</h3>
+
+<h4>Run-time exceptions and panic</h4>
+
+<ul>
+<li><em>runtime panic</em>: <code>runtime.Error</code>, <code>RuntimeError()</code>;</li>
+<li><em>panicking</em>: <code>panic(...)</code>; all <code>defer</code> statements are guaranteed to execute and then control is given to the function caller, which receivers this call to panic;</li>
+<li>std library <strong>Must</strong> functions, e.g. <code>regexp.MustCompile</code>, <code>template.Must</code>, would <code>panic()</code> when encounter an error;</li>
+</ul>
+
+
+<h4>Recover</h4>
+
+<ul>
+<li><code>recover</code> is only useful when called inside a <em>deferred</em> function: it retrieves the error value passed through the call of panic; when used in normal execution a call to recover will return nil and have no other effect.</li>
+<li>panic causes the stack to unwind until a deferred <code>recover()</code> is found or the program terminates.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">func</span> <span class="n">proect</span><span class="p">(</span><span class="n">g</span> <span class="k">func</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">log</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">err</span> <span class="p">:=</span> <span class="n">recover</span><span class="p">();</span> <span class="n">err</span> <span class="p">!=</span> <span class="n">nil</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">log</span><span class="p">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">&quot;runtime panic: %v&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}()</span>
+</span><span class='line'>    <span class="n">log</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="s">&quot;start&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>custom packages:</p>
+
+<ol>
+<li><em>always recover from panic in your package</em>: no explicit panic() should be allowed to cross a package boundary;</li>
+<li>return errors as error values to the <em>callers of your package</em>.</li>
+</ol>
+</li>
+<li><p>error-handling scheme with closures: (use a slice of empty interface as parameter and return type, to be more general)</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="k">func</span> <span class="n">check</span><span class="p">(</span><span class="n">err</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span> <span class="n">err</span> <span class="p">!=</span> <span class="n">nil</span> <span class="p">{</span> <span class="n">panic</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'><span class="k">func</span> <span class="n">errorHandler</span><span class="p">(</span><span class="n">fn</span> <span class="n">fType1</span><span class="p">)</span> <span class="n">fType1</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">func</span><span class="p">(</span><span class="n">a</span> <span class="n">type1</span><span class="p">,</span> <span class="n">b</span> <span class="n">type2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">defer</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">e</span><span class="p">,</span> <span class="n">ok</span> <span class="p">:=</span> <span class="n">recover</span><span class="p">().(</span><span class="n">error</span><span class="p">);</span> <span class="n">ok</span> <span class="p">{</span>
+</span><span class='line'>                <span class="n">log</span><span class="p">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">&quot;runtime panic: %v&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}()</span>
+</span><span class='line'>        <span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">f1</span><span class="p">(</span><span class="n">a</span> <span class="n">type1</span><span class="p">,</span> <span class="n">b</span> <span class="n">type2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//...</span>
+</span><span class='line'>    <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="p">:=</span> <span class="c1">// call</span>
+</span><span class='line'>    <span class="n">check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">t</span><span class="p">,</span> <span class="n">err1</span> <span class="p">:=</span> <span class="c1">// call</span>
+</span><span class='line'>    <span class="n">check</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">//...</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">errorHandler</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">errorHandler</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">//...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Testing and Benchmarking in Go</h3>
+
+<ul>
+<li>Test-programs must be within the same package, and the files must have names of the form <code>*_test.go</code>;</li>
+<li><code>_test</code> programs are <strong>NOT</strong> compiled with the normal Go-compilers, and not deployed in production;</li>
+<li>Must <code>import "testing"</code>, with global functions with names starting with <code>TestZzz</code>: <code>func TestAbc(t *testing.T)</code></li>
+<li><p>To signal a failure:</p>
+
+<ol>
+<li><code>func (t *T) Fail()</code>: marks the test function as having failed, but continues its execution;</li>
+<li><code>func (t *T) FailNow()</code>: marks failed and stops its execution; execution continues with the next text <strong>file</strong>;</li>
+<li><code>func (t *T) Log(args ...interface{})</code>: formatted log in the error-log;</li>
+<li><code>func (t *T) Fatal(args ...interface{})</code>: 2+3.</li>
+</ol>
+</li>
+<li><p><code>go test</code> parameters: <code>-v</code> for verbose;</p></li>
+<li><p>Benchmarking-programs must contains functions starting with <code>BenchmarkZzz</code>: <code>func BenchmarkZyx(b *testing.B)</code></p></li>
+<li>Table-driven tests: use an array to collect the test-inputs and the expected results together;</li>
+</ul>
+
+
+<h3>Tuning and profiling</h3>
+
+<ul>
+<li><code>go test -x -v -cpuprofile=prof.out -file x_test.go</code></li>
+<li>with <code>runtime/pprof</code>:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>CPUProfile.go</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="n">f</span><span class="p">,</span> <span class="n">err</span> <span class="p">:=</span> <span class="n">os</span><span class="p">.</span><span class="n">Create</span><span class="p">(*</span><span class="n">cpuprofile</span><span class="p">)</span>
+</span><span class='line'><span class="n">pprof</span><span class="p">.</span><span class="n">StartCPUProfile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span class='line'><span class="k">defer</span> <span class="n">pprof</span><span class="p">.</span><span class="n">StopCPUProfile</span><span class="p">()</span>
+</span><span class='line'><span class="n">f</span><span class="p">.</span><span class="n">Close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>MemoryProfile.go</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="n">f</span><span class="p">,</span> <span class="n">err</span> <span class="p">:=</span> <span class="n">os</span><span class="p">.</span><span class="n">Create</span><span class="p">(*</span><span class="n">memprofile</span><span class="p">)</span>
+</span><span class='line'><span class="n">pprof</span><span class="p">.</span><span class="n">WriteHeapProfile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span class='line'><span class="n">f</span><span class="p">.</span><span class="n">Close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><a href="http://code.google.com/p/google-perftools/">gopprof</a></li>
+<li><a href="http://blog.golang.org/2011/06/profiling-go-programs.html">Profiling Go Programs</a></li>
+</ul>
+
+
+<h2>XI. Multithreading</h2>
+
+<h3>Goroutine</h3>
+
+<ul>
+<li>GOMAXPROCS is equal to the number of (concurrent) threads, on a machine with more than 1 core, as many threads as there are cores can run in parallel.</li>
+<li>When the function <code>main()</code> returns, the program exits: it does not wait for other goroutines to complete.</li>
+<li>The logic of code must be independent of the order in which goroutines are invoked.</li>
+</ul>
+
+
+<h4>goroutines vs. coroutines</h4>
+
+<ol>
+<li>goroutines imply parallelism (or can deployed in parallel), coroutines in general do not</li>
+<li>goroutines communicate via channels; coroutines communicate via yield and resume operations</li>
+</ol>
+
+
+<h3>Channel: communication &amp; synchronization</h3>
+
+<ul>
+<li>Only one goroutine has access to a data item at any given time: so data races cannot occur, by design;</li>
+<li><code>var identifier chan datatype</code>; reference type;</li>
+<li>a channel of channels of int: <code>chanOfChans := make(chan chan int)</code></li>
+<li>a channel of functions: <code>funcChan := chan func()</code></li>
+<li>communication operator: <code>&lt;-</code></li>
+<li>The channel <em>send</em> and <em>receive</em> operations are atomic: they always complete without interruption.</li>
+<li><em>Don’t use print statements to indicate the order of sending to and receiving from a channel: this could be out of order with what actually happens due to the time lag between the print statement and the actual channel sending and receiving</em>.</li>
+<li>By default, communication is synchronous and unbuffered: sends do not complete until there is a receiver to accept the value.</li>
+<li>Buffered channel: <code>ch1 := make(chan string, buf)</code></li>
+<li>Sending to a buffered channel will not block unless the buffer is full; reading from a buffered channel will not block unless the buffer is empty.</li>
+</ul>
+
+
+<h2>XII. Network</h2>
+
+<ul>
+<li><code>net</code> <a href="http://golang.org/pkg/net/">package</a>.</li>
+<li>For web applications: <code>text/template</code>, <code>net/http</code> packages.</li>
+<li><code>net/rpc</code>.</li>
+</ul>
+
+
+<h2>XIII. Common Go pitfalls and mistakes</h2>
+
+<ol>
+<li>Never use the value in a for-range loop to change the value itself;</li>
+<li>Never use <code>goto</code> with a preceding label;</li>
+<li>Never forget <code>()</code> after a function-name, specifically when calling on a receiver or invoking a lambda function;</li>
+<li>Never use <code>new()</code> with maps, always <code>make</code>;</li>
+<li>Never forget to use <code>Flush()</code> when terminating buffered writing;</li>
+<li>Do not use global variables or shared memory for concurrent programs;</li>
+<li><p>Use println only for debugging purpose;</p></li>
+<li><p>Initialize a slice of maps the right way;</p></li>
+<li>Always use the comma, ok form for type assertions;</li>
+<li>Make and initialize your types with a factory;</li>
+<li><p>Use a pointer as a receiver for a method on a struct only when the method modifies the structure, otherwise use a value;</p></li>
+<li><p>One should use a <code>bytes.Buffer</code> to accumulate string content, when concatenating strings.</p></li>
+<li>Due to compiler-optimizations and depending on the size of the strings using a Buffer only starts to become more efficient when the number of iterations is > 15;</li>
+<li><code>defer</code> is only executed at the <code>return</code> of a function, not at the end of a loop or some other limited scope;</li>
+<li>No need to pass a pointer to a slice to a function;</li>
+<li>Never use a pointer to an interface type, this is already a pointer;</li>
+<li>Use goroutines and channels only where concurrency is important;</li>
+<li>Goroutines will probably not begin executing until after the loop;</li>
+<li>For error handling, do not use booleans.</li>
+</ol>
+
+
+<p><em>To be continued</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[install_name on OS X]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x/"/>
+    <updated>2012-03-10T20:29:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x</id>
+    <content type="html"><![CDATA[<p>On OS X, the loader <code>dyld</code> does have a search path, defined in the <code>DYLD_FRAMEWORK_PATH</code> and <code>DYLD_LIBRARY_PATH</code> variables. However, these are empty on OS X by default, so they rarely matter.</p>
+
+<p>Sometimes, we want to install a third-party library to a location, which is not system-defined, not <em>/usr/local/lib</em> nor <em>/usr/lib</em>, for some personal reasons or when you did not have root privilege. Suppose it was <em>libdummy</em>. If <em>libdummy</em>&#8217;s <strong>install_name</strong> was just libdummy.1.dylib or so, and you were building a program which links against libdummy. After the compilation, you checked the shared libraries your program used:</p>
+
+<pre><code>otool -L program
+</code></pre>
+
+<p>then you could see libdummy.1.dylib in the output, just <em>libdummy.1.dylib</em> in that line. Ja, the linker stored <em>install_name</em> there, not the location of the library.
+Then you let the program run, but the <code>dyld</code> said it could not find the proper libdummy.1.dylib. That&#8217;s the story a lot of people would experience on OS X.</p>
+
+<p>On Linux, we could modify <em>/etc/ld.so.conf</em> in order to include some other directories when the loader searches for a library. However, on OS X things are different. Also, we would not like to set <em>DYLD_</em> variables every time launching the program, nor add those variables in <em>.zshrc</em>, <em>.bashrc</em>, &#8230;</p>
+
+<p>De facto, as we know <strong>install_name</strong> matters, we could simply employ it.</p>
+
+<p>On Darwin platform, <code>gcc</code> has some platform dependent options, such as <code>-dynamic</code>, <code>-arch</code>, <code>-bundle</code>, and <code>-install_name</code> plays an important role here.</p>
+
+<pre><code>gcc -o libdummy.dylib -install_name ${PREFIX}/lib/libdummy.dylib ...
+</code></pre>
+
+<p>would set <strong>install_name</strong> for libdummy.dylib to a well-defined path. Next time when linking your program against libdummy, the linker would store that path. Use <code>otool -D</code> to print the <strong>install_nam</strong> for specified library.</p>
+
+<p>Besides absolute paths, we could use other techniques as well:
+<strong>@executable_path</strong>, <strong>@loader_path</strong>, <strong>@rpath</strong>. This <a href="https://wincent.com/wiki/@executable_path,_@load_path_and_@rpath">article</a> describes these very well.</p>
+
+<p>For already built libraries and programs, there is no need to rebuild them. On OS X, there is a very useful tool: <code>install_name_tool</code>.</p>
+
+<ul>
+<li>change <strong>install_name</strong> for a library:
+  <code>install_name_tool -id "new_install_name" libdummy.dylib</code></li>
+<li>change linked <strong>install_name</strong> in a program:
+  <code>install_name_tool -change "old_install_name" "new_install_name" program</code></li>
+</ul>
+
+
+<p>One more thing. If you use <code>cmake</code> to generate Makefile for you project, you could solve the <strong>install_name</strong> issue like <a href="http://www.cmake.org/pipermail/cmake/2011-April/043826.html">this</a>:</p>
+
+<pre><code>SET(CMAKE_INSTALL_NAME_DIR @executable_path)
+</code></pre>
+
+<p>Replace <em>@executable_path</em> with your own choice.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remote Exposure]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/03/remote-exposure/"/>
+    <updated>2012-03-03T20:44:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/03/remote-exposure</id>
+    <content type="html"><![CDATA[<h2>1. Choosing the Right Equipment</h2>
+
+<h3>Cameras</h3>
+
+<ul>
+<li><p>Film SLR is still a popular camera choice for a remote expedition.</p>
+
+<ul>
+<li>old manual SLRs, as well as most rangefinders, possess a mechanical shutter system that can operate without any power source;</li>
+<li><strong>downsides</strong>: no instantly review; more experience needed; physical medium of film;</li>
+<li>fSLR can be a great backup.</li>
+</ul>
+</li>
+<li><p>DSLRs</p>
+
+<ul>
+<li>pros: larger sensors, modular and interchangeable lenses, live view, longer battery life, faster, auto-bracketing;</li>
+<li>cons: heavier and bulkier;</li>
+<li><em>HDR</em> capability.</li>
+</ul>
+</li>
+<li><p>Compact Cameras</p>
+
+<ul>
+<li><strong>disadvantages</strong>: heavy noise, low battery life, slow autofocus, shutter lag, non-interchangeable lenses; even no viewfinder; lack of &#8216;RAW&#8217;;</li>
+<li>considerable <em>only</em> when:
+
+<ol>
+<li>the climb is very difficult: light weight is more important than bringing back good images;</li>
+<li>snapshots to complement your personal memories;</li>
+<li>a high-end compact could serve as a useful backup.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>EVILs (Electonic Viewfinder Interchangeable Lens Cameras)</p>
+
+<ul>
+<li>designed for street photography; close to APS-C DSLRs (with consumer lenses);</li>
+<li>cons: absence of an optical viewfinder;</li>
+<li>trade-off between weight and some special features and more choices in lenses (against DSLR).</li>
+</ul>
+</li>
+<li><p>The Big Stuff</p>
+
+<ul>
+<li>a bad idea.</li>
+</ul>
+</li>
+<li><p><strong>Summary</strong></p>
+
+<ul>
+<li>DSLR or EVIL; compact as a backup.</li>
+<li>it depends.</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Lenses</h3>
+
+<ul>
+<li>balance versatility and features with weight and portability;</li>
+<li>no need to focus on large apertures;</li>
+<li>sometimes it is inconvenient to change lenses;</li>
+<li>a wide lens is generally the most useful; <em>default</em> choice;</li>
+<li>oftentimes, telephoto lenses are a necessity; 200mm should be enough; <em>secondary</em> choice;</li>
+<li>ultra wide lenses are tricky to use;</li>
+<li>prime lenses: for experienced;</li>
+<li>gather some statistics in photo archives.</li>
+</ul>
+
+
+<h3>Carrying Systems</h3>
+
+<ul>
+<li><strong>have your camera accessible at all times</strong>;</li>
+<li>backpack with survival items;</li>
+<li>without fuss;</li>
+<li>size should be adapted;</li>
+<li>all the equipment you might use should be accessible;</li>
+<li>reasonably weather resistant;</li>
+<li>simple design: internal separators and a small pocket for memory cards and batteries;</li>
+<li>lightweight;</li>
+<li><em>camera backpacks</em> are worst, <em>chest</em> bag and <em>shoulder</em> bag are not that good;</li>
+<li>a <em>belt system</em> is the best solution: a padded belt and a few detachable pouches.</li>
+</ul>
+
+
+<h3>Battery and Memory Strategies</h3>
+
+<ul>
+<li>at least enough cards to get you through one day of shooting;</li>
+<li><em>cold is the deadliest threat to batteries</em>;</li>
+<li>careful and constant monitoring power sources;</li>
+</ul>
+
+
+<h3>Odds and Ends</h3>
+
+<ul>
+<li>lens caps, <em>UV filters</em>;</li>
+<li><em>lens hoods</em>;</li>
+<li><em>microfiber cloth</em>;</li>
+<li>need permission from every recognizable person in images;</li>
+</ul>
+
+
+<h3>Dead Weight</h3>
+
+<ul>
+<li>tripod: isn&#8217;t very useful in the mountains -> find a platform stable enough;</li>
+<li>artifical lighting: flash is more trouble than help;</li>
+<li>filters: UV or clear filters only;</li>
+<li>laptop: no;</li>
+</ul>
+
+
+<h3>Bring with</h3>
+
+<ul>
+<li><p>For Hiking and Less Demanding Climbs, e.g.:</p>
+
+<ul>
+<li>Nikon D90 w/ 2+ batteries, 12GB SD cards;</li>
+<li>Nikkor 16-35mm f/4 VR, 70-300mm f/4.5-5.6 VR (equipped w/ UV);</li>
+<li>Think Tank Skin belt system;</li>
+</ul>
+</li>
+<li><p>For Difficult Climbs, e.g.:</p>
+
+<ul>
+<li>EP-1 Pen m43, w/ 12GB SD cards;</li>
+<li>Zuiko 14-42mm f/3.5-5.6;</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<hr />
+
+<h2>2. Shooting</h2>
+
+<h3>When to Shoot</h3>
+
+<ul>
+<li>be psychologically prepared to stop in very inconvenient places; no fuss;</li>
+<li>checklist:
+
+<ul>
+<li>how safe is it to stop now?</li>
+<li>how are your partners going to react?</li>
+<li>how long is the photo opportunity likely to last?</li>
+<li>how good is the image going to be?</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Caring for Your Gear</h3>
+
+<ul>
+<li>weather protection, cold;</li>
+<li>water (humidity, rain), <em>condensation</em>;</li>
+<li>dust -> be extra careful;</li>
+<li>how <strong>NOT</strong> to drop stuff:
+
+<ul>
+<li>connect the camera strap to harness or bag;</li>
+<li>climbing sling;</li>
+</ul>
+</li>
+<li><em>Safety</em>:
+
+<ul>
+<li>always pack anything fragile or expensive as carry-on luggage;</li>
+<li>never leave bags out of your sight;</li>
+<li>keep &#8216;em attached;</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>A Complete Workflow</h3>
+
+<ul>
+<li>keep an eye out and an open mind for any potential photo;</li>
+<li>assess enviornment;</li>
+<li>communicate with partners;</li>
+<li>anchor yourself somewhere when needed;</li>
+<li>check the histogram;</li>
+<li>blahblahblah&#8230;</li>
+</ul>
+
+
+<h3>Exposure</h3>
+
+<ul>
+<li>snow: compensation to eliminate underexposing;</li>
+<li>ETTR (Expose To The Right): only against RAW, w/ post-processing;</li>
+<li>high contrast: use HDR, check histogram;</li>
+</ul>
+
+
+<hr />
+
+<h2>3. Creating Powerful Images</h2>
+
+<h3>Be Inspired</h3>
+
+<ul>
+<li>have something to say, and express it through photography;</li>
+</ul>
+
+
+<h3>Quantity vs. Quality</h3>
+
+<ul>
+<li>give you mileage;</li>
+<li>occasionally stumble upon hidden gems;</li>
+<li>you are not obligated to produce a masterpiece each time;</li>
+<li>photo opportunities are both unique and short-lived;</li>
+<li>images are great memories;</li>
+<li>heavy editing;</li>
+<li>shooting a lot replaces critical thinking and is only masking the photographer&#8217;s laziness of finding the optimal viewpoint for a scene.</li>
+</ul>
+
+
+<h3>Composition</h3>
+
+<p>Do <em>NOT</em> overestimate the checklist:</p>
+
+<ul>
+<li>rule of thirds;</li>
+<li>direct attention to a subject by color and light;</li>
+<li>strong shapes and lines;</li>
+<li>edges of an image are a sensitive area;</li>
+<li>out-of-focus background are important;</li>
+<li>leave plenty of space in image when subject is moving or looking in a direction;</li>
+<li>simpler composition -> stronger image.</li>
+</ul>
+
+
+<p><em>Through experience, by shooting thousands of images and seeing thousands more, both good and bad</em>.</p>
+
+<h3>The Story</h3>
+
+<ul>
+<li>put the image into words -> simply describe it;</li>
+<li>not to <em>explain</em> the story with extra info that does not show in the image.</li>
+</ul>
+
+
+<h3>More Practicaly</h3>
+
+<ul>
+<li>learn to see light and treat it as a subject in its own right;</li>
+<li>search for the optimal point of view;</li>
+<li>observer the weather, and make it another one of your subject;</li>
+<li>mountains are vertical environments;</li>
+<li>natural scenes look the same at any scale;</li>
+<li>get the timing just right when action shooting;</li>
+<li>pay attention to the backgrounds;</li>
+<li>place people in their enviroment unless for portraits;</li>
+<li>diversity of genres;</li>
+<li>break the rules, and experiment.</li>
+</ul>
+
+
+<hr />
+
+<h2>4. Discipline Specific</h2>
+
+<p>Four categories: camping, hiking, technical climbing, and mountaineering.</p>
+
+<h3>Camping</h3>
+
+<ul>
+<li>best light: sun is low;</li>
+<li>keep things simple, though getting good images of a campsite can be surprisingly difficult;</li>
+<li>opportunities: night, sunset;</li>
+</ul>
+
+
+<h3>Hiking</h3>
+
+<p>hiking is the easiest of the three different outdoor disciplines</p>
+
+<ul>
+<li>hiking scenes can lack visual drama;</li>
+<li>figure out the path;</li>
+<li>build your image backwards -> from backgrounds to foregrounds;</li>
+<li>place other hikers out of focus;</li>
+<li>faces creat very powerful photographs;</li>
+<li>alone? stable platform + self-timer;</li>
+</ul>
+
+
+<h3>Technical Climbing</h3>
+
+<ul>
+<li>perspective is the most important element of composition;</li>
+<li>show the face (of the leader);</li>
+<li>pay attention to backgrounds;</li>
+<li>the last important element is action;</li>
+<li>offer to send unknown climbers your pictures.</li>
+</ul>
+
+
+<h3>Mountaineering</h3>
+
+<ul>
+<li>the composition advice from the previous sections all apply;</li>
+<li>make the effort to look for good photo opportunities;</li>
+</ul>
+
+
+<hr />
+
+<h2>5. Advanced Techniques</h2>
+
+<h3>Low Light and Night Photography</h3>
+
+<ul>
+<li>full aperture -> but reduce depth of field;</li>
+<li>close the aperture until the depth of field is large enough to includes your subject;</li>
+<li>(unless shooting film) incress ISO;</li>
+<li>tripod -> tough: mirror lock-up, remote trigger, self-timer,etc;</li>
+<li>long exposure times will only work with relatively static subjects;</li>
+<li>metering and focus;
+
+<ul>
+<li>full manual mode;</li>
+<li>test until acceptable exposure has been obtained;</li>
+</ul>
+</li>
+<li>sometimes, use a flash/strobe;</li>
+</ul>
+
+
+<h3>Panoramic Images</h3>
+
+<ul>
+<li>a tripod and a panorama head;</li>
+<li>is panorama essential?</li>
+<li>select a focal length;</li>
+<li>post-process.</li>
+<li>manual exposure w/ tests, to avoid zebra looking in stitched final image;</li>
+<li>take all the pictures in as short a time as possible;</li>
+<li>repeat the entire process if necessary;</li>
+</ul>
+
+
+<h3>HDR</h3>
+
+<ul>
+<li>check histogram: whether it is cut off at <strong>both</strong> ends;</li>
+<li>otherwise, adjust the exposure compensation;</li>
+<li>auto-bracketing;</li>
+</ul>
+
+
+<h3>Video</h3>
+
+<ul>
+<li>careful planning;</li>
+<li>a closeup of a face;</li>
+<li>a mid-range shot;</li>
+<li>a closeup of hands;</li>
+<li>a point-of-view shot;</li>
+<li>get creative;</li>
+<li>composition rules from previous chapters;</li>
+<li>sound should never be underestimated;</li>
+<li>take it easy on the effects.</li>
+</ul>
+
+
+<hr />
+
+<h2>6. Closing Thoughts</h2>
+
+<h3>Ethics and Photo Manipulations</h3>
+
+<p><strong>The only question is who should do the manipulation, the user or the camera.</strong></p>
+
+<ul>
+<li>minor modifications and scene-changing modifications;</li>
+<li>be honest about your choices;</li>
+<li>photo manipulations are subjective;</li>
+</ul>
+
+
+<h3>Safety and the Environment</h3>
+
+<ul>
+<li>safety 1st;</li>
+<li>seek proper instr before venturing into wildnerness areas;</li>
+<li><a href="www.lnt.org">leave no trace philosophy</a></li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[25 Recipes for Getting Started with R]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/"/>
+    <updated>2012-03-03T20:42:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r</id>
+    <content type="html"><![CDATA[<h2>1. Downloading and Installing R</h2>
+
+<p><em>Noting special</em></p>
+
+<h2>2. Getting Help on a Function</h2>
+
+<p><code>help()</code>, <code>args()</code>, <code>example()</code>, <code>?func</code></p>
+
+<h2>3. Viewing the Supplied Documentation</h2>
+
+<p><code>help.start()</code></p>
+
+<h2>4. Searching the Web for Help</h2>
+
+<p><code>RSiteSearch("hey phrase")</code></p>
+
+<h2>5. Reading Tabular Datafiles</h2>
+
+<pre><code>read.table("target.txt", stringsAsFactor=FALSE)
+</code></pre>
+
+<p><em>will prevent <code>read.table()</code> from interpreting character string as factor</em>.</p>
+
+<p>Other options: <em><code>na.strings="."</code></em>, <em><code>header=T</code></em>, etc.</p>
+
+<h2>6. Reading from CSV Files</h2>
+
+<pre><code>read.csv("filename", header=T, as.is=T)
+</code></pre>
+
+<p><code>as.is=T</code> indicates that <strong>R</strong> should not interpret nonnumeric data as a <em>factor</em>.</p>
+
+<h2>7. Creating a Vector</h2>
+
+<p><code>c(...)</code></p>
+
+<h2>8. Computing Basic Statistics</h2>
+
+<ul>
+<li><code>na.rm=T</code> ignore <em>NA</em> values in data, otherwise result would be invalidated;</li>
+<li><code>lapply()</code> is magic.</li>
+</ul>
+
+
+<h2>9. Initializing a Data Frame from Column Data</h2>
+
+<pre><code>dfrm &lt;- data.frame(v1, v2, v3, v4)
+dfrm &lt;- as.data.frame(list.of.vectors)
+</code></pre>
+
+<h2>10. Selecting Data Frame Column by Position</h2>
+
+<ul>
+<li><code>dfrm[[n]]</code>, <code>dfrm[, n]</code>: returns <em>n</em>th column;</li>
+<li><code>dfrm[n]</code>: returns a data frame of <em>n</em>th column;</li>
+<li><code>dfrm[c(n1, n2, ..., nk)]</code>, <code>dfrm[, c(n1, n2, ..., nk)]</code>: returns a data frame of <em>k</em> columns.</li>
+</ul>
+
+
+<h2>11. Selecting Data Frame column by Name</h2>
+
+<p>Similar to the previous section.</p>
+
+<ul>
+<li><code>dfrm[["name"]]</code>, <code>dfrm$name</code>: returns <em>one column</em>, called <em>name</em>;</li>
+<li><code>dfrm["name"]</code>, <code>dfrm[c("name1", "name2", ..., "name3")]</code>, <code>dfrm[, "name"]</code>, <code>dfrm[, c(...)]</code>.</li>
+</ul>
+
+
+<h2>12. Forming a Confidence Interval for a Mean</h2>
+
+<ul>
+<li><code>t.test(x)</code>: apply to sample <em>x</em>, to determine a confidence interval;</li>
+<li><code>conf.level</code> argument: see intervals at other levels.</li>
+</ul>
+
+
+<h2>13. Forming a Confidence Interval for a Proportion</h2>
+
+<ul>
+<li><code>prop.test(n, x)</code>: sample size <em>n</em>, <em>x</em> successes;</li>
+<li>use <code>conf.level</code> argument for other confidence levels.</li>
+</ul>
+
+
+<h2>14. Comparing the Means of Two Samples</h2>
+
+<p>By default, <code>t.test()</code> assumes data is not paired. Test with two sample <em>x</em>, <em>y</em>:</p>
+
+<pre><code>t.test(x, y, paired=T)
+</code></pre>
+
+<h2>15. Testing a Correlation for Significance</h2>
+
+<ul>
+<li><code>cor.test(x, y, method="Spearman")</code> for nonnormally data; default is <em>Pearson</em> method.</li>
+<li>the function returns several values, including <em>p</em>-value from the test of significance. <u><em>p</em> &lt; 0.05</u> indicates that the correlation is likely significant; otherwise, not.</li>
+</ul>
+
+
+<h2>16. Creating a Scatter Plot</h2>
+
+<ul>
+<li><code>plot(x, y)</code>: two parallel vectors <em>x</em> and <em>y</em>;</li>
+<li><code>plot(dfrm)</code>: for data frame.</li>
+</ul>
+
+
+<h2>17. Creating a Bar Chart</h2>
+
+<ul>
+<li><code>barplot(vector)</code>;</li>
+<li>ref <code>tapply()</code>;</li>
+<li><code>barchart()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>18. Creating a Box Plot</h2>
+
+<ul>
+<li><code>boxplot(vector)</code></li>
+</ul>
+
+
+<h2>19. Creating a Histogram</h2>
+
+<ul>
+<li><code>hist(vector, number.of.bins)</code>: 7 bins by default;</li>
+<li><code>histogram()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>20. Performing Simple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ x)</code>: <code>y ~ x</code> is a <em>model formula</em></li>
+</ul>
+
+
+<h2>21. Performing Multiple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ u + v + w)</code></li>
+</ul>
+
+
+<h2>22. Getting Regression Statistics</h2>
+
+<ul>
+<li><p><code>m &lt;- lm(y ~ u + v + w)</code></p>
+
+<pre><code>  anova(m)                        ANOVA table
+  coef(m), coefficients(m)        Model coefficients
+  confint(m)                      Confidence intervals for the regression coefficients
+  deviance(m)                     Residual sum of squares
+  effects(m)                      Vector of orthogonal effects
+  fitted(m)                       Vector of fitted *y* values
+  resid(m), residuals(m)          Model residuals
+  summary(m)                      Key statistics
+  vcov(m)                         Variance-covariance matrix of the main parameters
+</code></pre></li>
+</ul>
+
+
+<h2>23. Diagnosing a Linear Regression</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>m <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ x<span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>m<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>library<span class="p">(</span>car<span class="p">)</span>
+</span><span class='line'>outlier.test<span class="p">(</span>m<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>24. Predicting New Values</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>m <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ u <span class="o">+</span> v <span class="o">+</span> w<span class="p">)</span>
+</span><span class='line'>preds <span class="o">&lt;-</span> data.frame<span class="p">(</span>u<span class="o">=</span><span class="m">3.1</span><span class="p">,</span> v<span class="o">=</span><span class="m">4.0</span><span class="p">,</span> w<span class="o">=</span><span class="m">5.5</span><span class="p">)</span>
+</span><span class='line'>predict<span class="p">(</span>m<span class="p">,</span> newdata<span class="o">=</span>preds<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>preds <span class="o">&lt;-</span> data.frame<span class="p">(</span>
+</span><span class='line'>            u<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">),</span>
+</span><span class='line'>            v<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">),</span>
+</span><span class='line'>            w<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">))</span>
+</span><span class='line'>predict<span class="p">(</span>m<span class="p">,</span> newdata<span class="o">=</span>preds<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>use <code>interval="prediction"</code> argument of <code>predict()</code> to obtain the confidence intervals.</li>
+</ul>
+
+
+<h2>25. Accessing the Functions in a Package</h2>
+
+<ul>
+<li><code>library(packagename)</code>;</li>
+<li><code>detach(package:name)</code>;</li>
+<li>higher function <strong>masks</strong> the lower function.</li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Data Mashups in R]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/03/data-mashups-in-r/"/>
+    <updated>2012-03-03T20:31:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/03/data-mashups-in-r</id>
+    <content type="html"><![CDATA[<h2>Ch.I Mapping Foreclosures</h2>
+
+<ul>
+<li><p>download</p>
+
+<pre><code>  download.file(url="URL", destfile="DEST")
+</code></pre></li>
+<li><p>regex</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>grep<span class="p">()</span>
+</span><span class='line'>gsub<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Yahoo!&#8217;s Latitude and Longitude service: <a href="http://developer.yahoo.com/wsregapp">sign up</a></p></li>
+<li><p>Parse XML</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>install.packages<span class="p">(</span><span class="s">&quot;XML&quot;</span><span class="p">)</span>
+</span><span class='line'>library<span class="p">(</span><span class="s">&quot;XML&quot;</span><span class="p">)</span>
+</span><span class='line'>xmlTreeParse<span class="p">(</span>requestURL<span class="p">,</span> isURL<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>install.package<span class="p">(</span><span class="s">&quot;RCurl&quot;</span><span class="p">)</span>
+</span><span class='line'>library<span class="p">(</span><span class="s">&quot;RCurl&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Proxy</p>
+
+<pre><code>  Sys.setenv("http_proxy" = "http://username:passwd@host:port")
+</code></pre></li>
+<li><p><em>Magic</em> <code>str()</code></p>
+
+<p>  it is good practice to closely examine each package&#8217;s data structures using <code>str()</code></p></li>
+<li><p>Exception handling</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>tryCatch<span class="p">({</span>
+</span><span class='line'>    xmlResult <span class="o">&lt;-</span> xmlTreeParse<span class="p">(</span>requestURL<span class="p">,</span> isURL<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> addAttributeNamespaces<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#...other code...</span>
+</span><span class='line'>    <span class="p">},</span> error<span class="o">=</span><span class="kr">function</span><span class="p">(</span>err<span class="p">){</span>
+</span><span class='line'>        cat<span class="p">(</span><span class="s">&quot;xml parsing or http error:&quot;</span><span class="p">,</span> conditionMessage<span class="p">(</span>err<span class="p">),</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><a href="http://cran.r-project.org/web/packages/PBSmapping/index.html">PBSmapping</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>library<span class="p">(</span>PBSmapping<span class="p">)</span>
+</span><span class='line'>plotPolys<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Exploring Data Structures</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>as.numeric<span class="p">()</span>
+</span><span class='line'>level<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Color</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>head.colors<span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>Ch.II Statistics of Foreclosure</h2>
+
+<ul>
+<li><p>Data is available at <a href="http://factfinder.census.gov/servlet/DCGeoSelectServlet?ds_name=DEC_2000_SF3_U">FactFinder</a></p></li>
+<li><p>skip lines when reading from file</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>read.table<span class="p">(</span><span class="s">&quot;FILE&quot;</span><span class="p">,</span> skip<span class="o">=</span><span class="m">1</span><span class="p">,</span> na.string<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Descriptive Statistics: <code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>cor()</code>, <code>summary()</code>.</p></li>
+<li><p>lattice</p>
+
+<pre><code>  library(lattice)
+  install.packages(latticsExtra)
+  library(latticeExtra)
+</code></pre>
+
+<ul>
+<li>plot: <code>stripplot()</code> + <code>bwplot()</code></li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>print<span class="p">(</span>stripplot<span class="p">(</span>IncomeLevels ~ jitter<span class="p">(</span>ct<span class="p">$</span>FCs<span class="p">),</span>
+</span><span class='line'>    main<span class="o">=</span>list<span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;Foreclures grouped by National Median Household Income&quot;</span><span class="p">,</span> cex<span class="o">=</span><span class="m">1</span><span class="p">),</span>
+</span><span class='line'>    sub<span class="o">=</span>list<span class="p">(</span><span class="s">&quot;Greater or less than $50,000&quot;</span><span class="p">,</span> cex<span class="o">=</span><span class="m">1</span><span class="p">),</span>
+</span><span class='line'>    xlab<span class="o">=</span><span class="s">&quot;foreclosures&quot;</span><span class="p">,</span>
+</span><span class='line'>    ylab<span class="o">=</span><span class="s">&quot;household median income&quot;</span><span class="p">,</span>
+</span><span class='line'>    aspect<span class="o">=</span><span class="m">.3</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;lightblue&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="m">2</span> <span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>as.layer<span class="p">(</span>bwplot<span class="p">(</span>IncomeLevels ~ ct<span class="p">$</span>FCs<span class="p">,</span> varwidth<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> box.ratio<span class="o">=</span><span class="m">0.4</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="s">&quot;|&quot;</span><span class="p">))</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Correlation</p>
+
+<p>  In R, we can create multidimensional correlation graphs using the <code>pairs()</code> scatterplot matrix package.</p></li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+]]></content>
+  </entry>
+  
+</feed>

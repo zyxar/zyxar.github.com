@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Lang | Mark's Logs]]></title>
+  <link href="http://zyxar.github.com/blog/categories/lang/atom.xml" rel="self"/>
+  <link href="http://zyxar.github.com/"/>
+  <updated>2013-02-14T00:49:54+08:00</updated>
+  <id>http://zyxar.github.com/</id>
+  <author>
+    <name><![CDATA[Marcus Zy]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Go Lang Notes]]></title>
+    <link href="http://zyxar.github.com/blog/2012/04/08/go-lang-notes/"/>
+    <updated>2012-04-08T14:50:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/04/08/go-lang-notes</id>
+    <content type="html"><![CDATA[<h2>TL;DR</h2>
+
+<h2>0. Resources</h2>
+
+<ul>
+<li><a href="http://godashboard.appspot.com/project">Go Dashboard</a></li>
+<li><a href="http://go-lang.cat-v.org">Go Lang SRC</a></li>
+<li><a href="http://tour.golang.org">tour.golang</a>, <a href="https://gist.github.com/2317744">solutions</a></li>
+<li><a href="https://gist.github.com/2317067">My first Go program</a></li>
+<li>PaaS: GAE, Heroku</li>
+</ul>
+
+
+<h2>I. Interaction with other language</h2>
+
+<h3>C</h3>
+
+<ul>
+<li><a href="http://golang.org/cmd/cgo">cgo</a>. Include C-libs or even valid C-code by placing these statements as comments <em>immediately</em> above the import "C" line:</li>
+</ul>
+
+
+<p><code>go
+//#include &lt;stdio.h&gt;
+//#include &lt;stdlib.h&gt;
+import "C"
+import "unsafe"
+</code></p>
+
+<ul>
+<li><code>C.uint</code>, <code>C.long</code>, <code>C.random()</code>:</li>
+</ul>
+
+
+<p><code>go
+var i int
+C.uint(i)
+int(C.random())
+</code></p>
+
+<ul>
+<li>Strings convertion: <code>C.CString(s)</code>, <code>C.GoString(cs)</code>:</li>
+</ul>
+
+
+<p>``` go</p>
+
+<pre><code>cstring := C.CString(gostring)
+defer C.free(unsafe.Pointer(cstring))
+</code></pre>
+
+<p>```</p>
+
+<ul>
+<li>Memory allocations made by C code are not known to Go's memory manager:</li>
+</ul>
+
+
+<p><code>go
+defer C.free(unsafe.Pointer(Cvariable))
+</code></p>
+
+<ul>
+<li>Pseudo <strong>#cgo</strong> directives:</li>
+</ul>
+
+
+<p>``` go hdfs.go
+// #cgo linux CFLAGS: -I/opt/jdk/include -I/opt/jdk/include/linux
+// #cgo linux LDFLAGS: -Llib -lhdfs -L/opt/jdk/jre/lib/amd64/server -ljvm
+// #cgo darwin LDFLAGS: -L/usr/lib/java -lhdfs -framework JavaVM
+// #include "hdfs.h"
+/<em>
+int getlen(char</em>** ptr) {</p>
+
+<pre><code>int i = 0;
+while (ptr[i] != NULL) ++i;
+return i;
+</code></pre>
+
+<p>}
+int getl(char*** ptr) {</p>
+
+<pre><code>int i = 0;
+while (ptr[0][i] != NULL) ++i;
+return i;
+</code></pre>
+
+<p>}
+char<em> getstring(char</em>** ptr, int i, int j) {</p>
+
+<pre><code>return ptr[i][j];
+</code></pre>
+
+<p>}
+*/
+import "C"
+```
+- Pointer arithmetic:</p>
+
+<p><code>go
+var p *C.hdfsFileInfo
+p = (*C.hdfsFileInfo)(unsafe.Pointer(uintptr(unsafe.Pointer(info)) + uintptr(i)*unsafe.Sizeof(C.hdfsFileInfo{})))
+</code></p>
+
+<h3>C++</h3>
+
+<ul>
+<li><p>SWIG (Simplified Wrapper and Interface Generator) supports for calling C++/C code from Go on Linux.</p>
+
+<ul>
+<li>Write the SWIG interface file for the lib to be wrapped</li>
+<li>SWIG generates the C stub functions</li>
+<li>called using the <code>cgo</code> machinery</li>
+</ul>
+</li>
+<li><p>SWIG does <em>NOT</em> understand all of C++.</p></li>
+</ul>
+
+
+<h2>II. Basic constructs and elementary data types</h2>
+
+<h3>Filenames, Keywords, Identifiers</h3>
+
+<ul>
+<li>Filenames may not contain spaces or any other special chars.</li>
+<li>Identifiers: valid if begin with a letter (even Unicode) and followed by 0 or more letters or Unicode digits.</li>
+<li><code>_</code> is <em>blank identifier</em>.</li>
+<li><em>anonymous</em></li>
+<li>25 <em>keywords</em> or reserved words:
+  <code>break</code>, <code>case</code>, <code>chan</code>, <code>const</code>, <code>continue</code>, <code>default</code>, <code>defer</code>, <code>else</code>, <code>fallthrough</code>, <code>for</code>, <code>func</code>, <code>go</code>, <code>goto</code>, <code>if</code>, <code>import</code>, <code>interface</code>, <code>map</code>, <code>package</code>, <code>range</code>, <code>return</code>, <code>select</code>, <code>struct</code>, <code>switch</code>, <code>type</code>, <code>var</code></li>
+<li>36 <em>predeclared identifiers</em>:
+  <code>append</code>, <code>bool</code>, <code>byte</code>, <code>cap</code>, <code>close</code>, <code>complex</code>, <code>complex64</code>, <code>complex128</code>, <code>copy</code>, <code>false</code>, <code>float32</code>, <code>float64</code>, <code>imag</code>, <code>int</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>, <code>iota</code>, <code>len</code>, <code>make</code>, <code>new</code>, <code>nil</code>, <code>panic</code>, <code>print</code>, <code>println</code>, <code>real</code>, <code>recover</code>, <code>string</code>, <code>true</code>, <code>uint</code>, <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code>, <code>uintptr</code></li>
+<li>Used punctuation chars: <code>.</code>,<code>,</code>,<code>;</code>,<code>:</code>,<code>...</code></li>
+<li>Used delimiters: <code>()</code>, <code>[]</code>, <code>{}</code></li>
+<li>Automatic semicolon insertion. However, multiple statements must be seperated by <code>;</code> on one line.</li>
+</ul>
+
+
+<h3>Basic structure and components</h3>
+
+<h4>Packages, import and visibility</h4>
+
+<ul>
+<li>Every go-file belongs to one (and only one) <em>package</em>. Many different <code>.go</code> files can belong to one <em>package</em>.</li>
+<li>Package must be indicated on the first line. A standalone exec belongs to package <strong>main</strong>; each go app contains one package <em>main</em>; a package name is written in <strong>lowercase</strong> letters.</li>
+<li>Package is compiled as a unit; each dir contains one package by convetion.</li>
+<li><em>Every piece of code is compiled only once</em>.</li>
+<li>Apart from <code>_</code>, Ids of code-objs have to be unique in a package.</li>
+<li><p><strong>Visibility Rule</strong>:</p>
+
+<ul>
+<li>Id start with an uppercase, then the 'obj' with this identifier is <em>visible</em> in code outside the package: <em>exported</em>, like <em>public</em> in OO.</li>
+<li>Id start with a lowercase are not visible outside the package: like <em>private</em>.</li>
+</ul>
+</li>
+<li><p>alias package: <code>import fm "fmt"</code></p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h4>Functions</h4>
+
+<ul>
+<li><code>func main</code> must have no arguments and no return values results.</li>
+<li>the first <code>{</code> must be on the same line as the func-declaration.</li>
+<li>the last <code>}</code> is positioned after the function-code in the column beneath <strong>f</strong>unction.</li>
+<li>Every package <em>should</em> have a <em>package comment</em>, a block comment immediately preceding the package statement.</li>
+<li>Nearly every top-level type, const, var and func, and certainly every exported name in a program should have a comment: <em>doc comment</em>, starts with the name.</li>
+</ul>
+
+
+<h4>Types</h4>
+
+<ul>
+<li>Types can be <em>elementary</em>, <em>structured</em>, and <em>interfaces</em>.</li>
+<li><code>nil</code>: value for structured type which has no real value; also the default value.</li>
+<li>There is no type-hierarchy.</li>
+<li>A function can <em>return more than one variable</em>.</li>
+<li><strong>GO is a <em>statically typed</em> language</strong>.</li>
+<li><p><em>order of execution</em></p>
+
+<ul>
+<li>all packages in package main are imported in the order as indicated, in every package;</li>
+<li>recursively imports packages, but a certain package is imported only once;</li>
+<li>for every package (in reverse order) all constants and variables are evaluated, and <code>init()</code> if exists;</li>
+<li>at last the package main; then <code>main()</code> starts executing.</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>About naming</h4>
+
+<ul>
+<li>Names of things in Go should be short, concise, evocative;</li>
+<li>Names should not contain an indication of the package;</li>
+<li>Use MixedCaps or mixedCaps rather than underscores;</li>
+<li>No <code>Get...()</code>; but <code>SetName()</code></li>
+</ul>
+
+
+<h4>Constants</h4>
+
+<ul>
+<li>Can only be of type <em>boolean</em>, <em>number</em>, or <em>string</em>.</li>
+</ul>
+
+
+<p><code>go
+const identifier [type] = value // type is optinal
+</code></p>
+
+<ul>
+<li>Constants must be evaluated at compile time.</li>
+<li>Constants can be used for <em>enumerations</em>:</li>
+</ul>
+
+
+<p>``` go
+const (</p>
+
+<pre><code>Unkonwn = 0
+Female  = 1
+Male    = 2
+</code></pre>
+
+<p>)
+```</p>
+
+<ul>
+<li>So does the value <code>iota</code>:</li>
+</ul>
+
+
+<p>``` go
+const (</p>
+
+<pre><code>a = iota
+b //= iota
+c //= iota
+</code></pre>
+
+<p>)
+<code>``
+- A new const block or declaration initializes</code>iota` back to 0.</p>
+
+<h3>Variables</h3>
+
+<ul>
+<li><em>all memory in Go is initialized</em>.</li>
+<li>if the variable has to be exported, it must start with a capital letter.</li>
+<li>variable <em>scope</em>: global/package scope; local scope.</li>
+<li>declaration: <code>var a int</code>, <code>a := 1</code></li>
+<li>all vars of elementary types (int, float, bool, string, ...) are <em>value</em> types, in <em>stack</em> memory.</li>
+<li>more complex data which usually needs several words are treated as <em>reference types</em>.</li>
+<li><em>pointers</em> are <em>reference types</em>, as well as <em>slices</em>, <em>maps</em>, and <em>channels</em>.</li>
+<li>vars that are referenced are stored in the <em>heap</em>, where gc works.</li>
+<li><p>Printing:</p>
+
+<ul>
+<li><code>fmt.Printf()</code>: <code>%s</code>, <code>%v</code></li>
+<li><code>fmt.Sprintf()</code>: return formatted string</li>
+<li><code>fmt.Print()</code>, <code>fmt.Println()</code>: automatic formatting</li>
+</ul>
+</li>
+<li><p><code>:=</code> can only be used inside functions, not in package scope.</p></li>
+<li>blank identifier <code>_</code> can also be used to throw away values: <code>_, b = 5, 7</code></li>
+<li><p><code>init()</code>:</p>
+
+<ul>
+<li>every source file can contain only <strong>1</strong> init() function</li>
+<li>initialization is always single-threaded and package dependency guarantees correct exec order</li>
+<li>used to verify or repair correctness of the program state before real exec begions</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Elementary types and operators</h3>
+
+<ul>
+<li>must be explicit conversion: Go is <em>strongly typed</em></li>
+<li>no operator overloading</li>
+<li>an expression is by default evaluated from <strong>left to right</strong></li>
+<li><p>format specifier:</p>
+
+<ul>
+<li><code>%t</code> -> booleans</li>
+<li><code>%d</code>, <code>%x</code>, <code>%X</code> -> integers</li>
+<li><code>%g</code> -> float; <code>%f</code> -> floating point, <code>%e</code> -> scientific notation; also <code>%n.mg</code>, <code>%n.me</code>, <code>%n.mf</code></li>
+<li><code>%b</code> -> bit-representations</li>
+<li><code>%U</code> -> UTF-8 code point: <em>U+hhhh</em> notation</li>
+<li><code>%p</code> -> pointer representation</li>
+<li><code>%T</code> -> complete type specification</li>
+<li><code>%#v</code> -> complete output of the instance with its fields</li>
+</ul>
+</li>
+<li><p><code>int</code>, <code>uint</code>, <code>uintptr</code> are <em>architecture dependent types</em>; but no <code><del>float</del></code> type</p></li>
+<li><strong>comlex number</strong>: <code>real(c)</code>, <code>imag(c)</code></li>
+</ul>
+
+
+<p><code>go
+var c1 complex64 = 5 + 10i
+fmt.Printf("%v", c1)
+</code></p>
+
+<ul>
+<li><code>&amp;^</code> -> force a specified bit to 0</li>
+<li>no error is generated when an <em>overflow</em> occurs during an arithmetic operation</li>
+<li>pseudo random numbers: <code>rand.Int()</code>, <code>rand.Intn(n)</code>, <code>rand.Float32()</code>, <code>rand.Float64()</code>, <code>rand.Seed(sd)</code></li>
+<li><p><strong>operator precedence</strong>:</p>
+
+<pre><code>  ^ !
+  * / % &lt;&lt; &gt;&gt; &amp; &amp;^
+  + - | ^
+  == != &lt; &lt;= &gt;= &gt;
+  &lt;-
+  &amp;&amp;
+  ||
+</code></pre></li>
+<li><p><strong>character</strong>: <code>var ch byte = '\x41'</code>, <code>var ch int = '\u0041'</code>, <code>var ch int = '\U00101234'</code></p></li>
+<li>type <code>rune</code> an alias for type <code>int32</code>, for Unicode</li>
+<li><p><strong>strings</strong> are a sequence of UTF-8 characters, <em>value</em> types and <em>immutable</em> arrays of bytes.</p>
+
+<ul>
+<li>interpreted strings: surrounded by <code>"intr string"</code></li>
+<li>raw strings surrounded by <code>`raw string`</code></li>
+<li>length-delimited and do not terminate by a special char as in C/C++; <code>len(str)</code></li>
+<li>default value is <em>empty</em>: <code>""</code></li>
+<li><code>&amp;str[i]</code> is illegal</li>
+<li>concatenating strings: <code>+</code>, <code>strings.Join()</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h3><code>strings</code> and <code>strconv</code> package</h3>
+
+<ul>
+<li><code>strings.IndexRune(s string, ch int)</code> for non-ASCII character</li>
+<li><code>strings.HasPrefix(s, prefix string)</code>, <code>strings.HasSuffix(s, suffix string)</code></li>
+<li><code>strings.Contains(s, substr string)</code></li>
+<li><code>strings.Index(s, str string)</code>, <code>strings.LastIndex(s, str string)</code></li>
+<li><code>strings.Replace(str, old, new, n)</code>, if <code>n = -1</code> all occurrences are replaced</li>
+<li><code>strings.Repeat(s string, count int)</code></li>
+<li><code>strings.ToLower()</code>, <code>strings.ToUpper()</code></li>
+<li><code>strings.TrimSpace(s)</code>, <code>strings.Trim(s, "\r\n")</code>, <code>strings.TrimLeft()</code>, <code>strings.TrimRight()</code></li>
+<li><code>strings.Fields(s)</code>, <code>strings.Split(s, sep)</code></li>
+<li><code>strings.Join(s1 []string, sep string)</code></li>
+<li><code>strings.NewReader(str)</code> -> <code>r.Read()</code> read a []byte; <code>r.ReadByte()</code> <code>r.ReadRune()</code> read next byte or rune</li>
+<li>to convert a variable of a certain type <code>T</code> to a string will always succeed: <code>strconv.Itoa()</code>, <code>strconv.FormatFloat()</code></li>
+</ul>
+
+
+<h3>times and dates</h3>
+
+<ul>
+<li>package <strong>time</strong>, datatype <code>time.Time</code>, type <code>Duration</code>, type <code>Location</code></li>
+<li><code>time.Now()</code>, <code>t.Day()</code>, <code>t.Add()</code>, etc.</li>
+<li><code>time.After</code>, <code>time.Ticker</code>, <code>time.Sleep(Duration d)</code></li>
+<li><code>time.Unix()</code></li>
+</ul>
+
+
+<h3>Pointers</h3>
+
+<ul>
+<li><code>&amp;</code> <em>address of</em></li>
+<li><code>*</code> <em>type modifier</em>, <em>dereference</em></li>
+<li>cannot take the address of a literal or a constant</li>
+<li><em>pointer arithmetic</em> is <strong>NOT</strong> allowed</li>
+<li><code>nil</code> pointer dereference is illegal</li>
+</ul>
+
+
+<h2>III. Control structures and Functions</h2>
+
+<ul>
+<li><p><code>if else</code></p>
+
+<ul>
+<li>the <code>else if</code> and <code>else</code> keywords must be on the same line as the closing <code>}</code></li>
+<li>idiom: omit the else-clause when the if ends in a <code>break</code>, <code>continue</code>, <code>goto</code> or <code>return</code> statement</li>
+<li>do not use if/else with a return in both branches</li>
+<li><code>if val := xxx; val &gt; yyy { ... }</code></li>
+</ul>
+</li>
+<li><p><code>switch case</code></p>
+
+<ul>
+<li><code>break</code> is implicit</li>
+<li>keyword <code>fallthrough</code></li>
+<li><code>case val1, val2, val3:</code></li>
+<li>when the case-statements ends with a <code>return</code> statement, there also has to be a <code>return</code> statement after the <code>}</code> of the switch.</li>
+<li><em>type-switch</em>: [see details in interface section]</li>
+</ul>
+</li>
+<li><p><code>for (range)</code></p>
+
+<ul>
+<li><code>for ix, val := range coll {}</code></li>
+<li><code>val</code> here is a copy of the value at that index in the collection, so it can only be used in read purpose;</li>
+</ul>
+</li>
+<li><p>Infinite loops: <code>for {}</code></p></li>
+<li><p>Condition controlled iteration: <code>for condition {}</code></p></li>
+<li><p><code>break</code>/<code>continue</code></p>
+
+<ul>
+<li>a break statement always breaks out of the innermost structure in which it occurs; execution continues after the ending <code>}</code> of that structure;</li>
+<li><code>continue</code> skips the remaining part of the loop, but the next iteration.</li>
+</ul>
+</li>
+<li><p>Label/<code>goto</code></p>
+
+<ul>
+<li>discouraged.</li>
+<li>do not declare any new variables between the goto and the label.</li>
+</ul>
+</li>
+<li><p><code>select</code> for switching between channels</p></li>
+<li><p>Starting an external command or program: <code>os</code> and <code>os/exec</code> package</p></li>
+</ul>
+
+
+<h2>IV. Arrays and Slices</h2>
+
+<h3>Arrays</h3>
+
+<ul>
+<li>An array is a numbered and fixed-length sequence of data items of the same single-type.</li>
+<li>Length must be a constant expression, non-negative integer value; it is part of the type of the array, e.g. <code>[2]int</code>.</li>
+<li>Arrays are mutable.</li>
+<li>An array is a value type, (not a pointer to the first element like in C/C++), and can be created with <code>new()</code>.</li>
+<li><p>Array literals:</p>
+
+<ol>
+<li><code>var arrAge = [5]int{1, 2, 3, 4, 5}</code></li>
+<li><code>var arrAge = [...]int{1, 2, 3, 4, 5}</code></li>
+<li><code>var arrKV = [5]string{3: "Andy", 4: "Ken"}</code></li>
+</ol>
+</li>
+<li><p>Arrays are always 1-dimensional, but may be composed to form multidimensional arrays: <code>[3][5]int</code>;</p></li>
+<li>The inner arrays have always the same length; Multidimensional arrays are <em>rectangular</em>, except <em>arrays of slices</em>.</li>
+</ul>
+
+
+<h3>Slices</h3>
+
+<ul>
+<li>A slice is a reference to a contiguous segment of an array (the underlying array).</li>
+<li>Slice is a reference type.</li>
+<li>Slice provide a dynamic window onto the underlying array: <code>slice[a:b]</code>, b is not included in the slice.</li>
+<li>A slice is a variable-length array.</li>
+<li><code>len()</code>, <code>cap()</code></li>
+<li>A slice in memory is in fact a struct with 3 fields: a pointer to the underlying array, the length of the slice, and the capacity of the slice.</li>
+<li>Create a slice with <code>make()</code></li>
+<li>Slices of slices: the lengths may be vary dynamically, <em>jagged</em>.</li>
+<li>Inner slices must be allocated individually, with <code>make()</code></li>
+<li><code>func append(s []T, x ...T) []T</code>: allocate a new, sufficiently large slice.</li>
+<li><code>func copy(dst, src []T) int</code></li>
+<li>make a slice of bytes from string: <code>c := []byte(s)</code></li>
+</ul>
+
+
+<h2>V. Maps</h2>
+
+<ul>
+<li>A map is a reference type: <code>var map1 map[keytype]valuetyep</code></li>
+<li>The length does not have to be known at declaration, but can grow dynamically.</li>
+<li>Key type can be any type for which the operations <code>==</code> and <code>!=</code> are defined.</li>
+<li>Value type can be any type, even a func() type:</li>
+</ul>
+
+
+<p>``` go
+mf := map[int]func() int {</p>
+
+<pre><code>1: func() int { return 10 },
+2: func() int { return 20 },
+5: func() int { return 50 },
+</code></pre>
+
+<p>}
+mf<a href="">2</a>
+```</p>
+
+<ul>
+<li>Arrays, slices and structs cannot be used as key type, but pointers and interface type can.</li>
+<li>One way to use structs as a key is to provide them with a Key() or Hash() method.</li>
+<li>Map indexing is much faster than a linear search; but still 100x slower than direct array or slice indexing.</li>
+<li>Create maps by <code>make()</code>, never <code>new()</code>.</li>
+<li>Capacity: <code>make(map[key]value, cap)</code></li>
+<li>Test if a key-value exists in a map: <code>_, exists := map1[key1]</code></li>
+<li>Remove: <code>delete(map1, key1)</code></li>
+<li>for-range to get all keys or values.</li>
+<li>If the value type of a map is acceptable as a key type, and the map values are unique, inverting can be done easily, via for-range.</li>
+</ul>
+
+
+<h2>VI. Packages</h2>
+
+<ul>
+<li>import "path or url to the package"</li>
+<li>By convention, each package (all the go files belonging to it) resides in its own subdirectory, which has the same name as the package.</li>
+<li><code>import . "packa"</code>: use items from the package 'packa' without qualifying with the package name;</li>
+<li><code>import _ "packa"</code>: imported for side-effects only, the init functions are executed and global variables initialized;</li>
+<li>import external packages: <code>go get URL</code>, installed at <code>$GOPATH/src/</code> or <code>$GOROOT/src/</code>, then call <code>go install URL</code></li>
+<li><code>import goex "codesite.ext/author/GoExample/goex"</code></li>
+<li>Use <code>go doc</code> for custom packages</li>
+</ul>
+
+
+<h2>VII. Methods</h2>
+
+<ul>
+<li>Method is a function that acts an variable of a certain type, called <em>receiver</em>.</li>
+<li>The receiver can be almost anything: even a function type or alias type for int, bool, string or array.</li>
+<li>The receiver cannot be an interface type.</li>
+<li>The receiver cannot be a pointer type, but it can be a pointer to any of the allowed types.</li>
+<li>An alias of a certain type <em>*doesn't have</em> the methods defined on that type.</li>
+<li>If the method does not need to use the value recv, discard it by <code>_</code>.</li>
+<li>A method and the type on which it acts must be defined in the same package. Use an <em>alias</em> type, or <code>struct</code> instead.</li>
+<li>The receiver must have an explicit name, and this name must be used in the method.</li>
+<li>The receiver type is called the <em>(receiver) base type</em>; it must be declared within the same package as all of its methods</li>
+<li>If for a type T a method Meth() exists on *T and t is a variable of type T, then <code>t.Meth()</code> is automatically translated to <code>(&amp;t).Meth()</code>.</li>
+<li>Pointer and value methods can both be called on pointer or non-pointer values.</li>
+<li>It should not be possible that the fields of an object can be changed by 2 or more different threads at the same time. Use methods of the package <em>sync</em>.</li>
+<li>When an anonymous type is embedded in a struct, the <strong>visible</strong> methods of that type are inherited by the outer type:</li>
+</ul>
+
+
+<p>``` go
+type Point struct {</p>
+
+<pre><code>x, y float64
+</code></pre>
+
+<p>}</p>
+
+<p>func (p *Point) Abs() float64 {</p>
+
+<pre><code>return math.Sqrt(p.x*p.x + p.y*p.y)
+</code></pre>
+
+<p>}</p>
+
+<p>type NamedPoint struct {</p>
+
+<pre><code>Point
+name string
+</code></pre>
+
+<p>}</p>
+
+<p>func main() {</p>
+
+<pre><code>n := &amp;NamedPoint{Point{3,4}, "Pythagoras"}
+fmt.Println(n.Abs())
+</code></pre>
+
+<p>}
+```</p>
+
+<ul>
+<li>A method in the embedding type with the same name as a method in an embedded type overrides this.</li>
+</ul>
+
+
+<p>``` go
+func (n *NamedPoint) Abs() float64 {</p>
+
+<pre><code>return n.Point.Abs() * 100
+</code></pre>
+
+<p>}
+```</p>
+
+<ul>
+<li>Embedding multiple anonymous types -> <em>multiple inheritance</em>.</li>
+<li>Structs embedding structs from the same package have all access to one another's fields and methods.</li>
+<li><p>Embed functionality in a type:</p>
+
+<ul>
+<li><em>Aggregation/composition</em>: include a named field of the type of the wanted functionality</li>
+<li><em>Embedding</em>: anonymously embed the type of the wanted functionality</li>
+</ul>
+</li>
+<li><p><code>String()</code> method:</p>
+
+<ul>
+<li>do not make mistake of defining <code>String()</code> in terms of itself -> infinite recursion.</li>
+</ul>
+</li>
+<li><p>Summarzed: in Go types are basically classes. Go does not know inheritance like class oriented OO languages.</p></li>
+<li>More OO capabilities: <a href="https://github.com/losalamos/goop">goop</a> provides Go with JavaScript-style objects but supports multiple inheritance and type-dependent dispatch.</li>
+<li>Suppose special action needs to be taken right before an object <em>obj</em> is removed from memory (gc), like writing to a log-file, achieved by:</li>
+</ul>
+
+
+<p><code>go
+runtime.SetFinalizer(obj, func(obj *typeObj))
+</code></p>
+
+<ul>
+<li><code>SetFinalizer</code> does not execute when the program comes to an normal end or when an error occurs, before the object was chosen by the gc process to be removed.</li>
+</ul>
+
+
+<h2>VIII. Interface</h2>
+
+<h3>Polymorphism</h3>
+
+<ul>
+<li>An interface defines <em>abstract method set</em>, but cannot contain variables;</li>
+<li><p>Interface internal:</p>
+
+<pre><code>  +------------+------------+
+  |            |   method   | 
+  |  receiver  |   table    |
+  |            |   pointer  |
+  +------------+------------+
+</code></pre>
+
+<ul>
+<li>Thus, pointers to interface values are illegal.</li>
+<li>Table of method pointers is built through runtime reflection capability.</li>
+</ul>
+</li>
+<li><p>Multiple types can implement the same interface;</p></li>
+<li>A type that implements an interface can also have other methods;</li>
+<li>A type cam implements many interface;</li>
+<li>An interface type can contain a reference to an instance of any of the types that implement the interface: <em>dynamic type</em>;</li>
+<li>Interface embedding interface(s): enumerating the methods;</li>
+<li><p>type assertions:</p>
+
+<ul>
+<li><code>v := varI.(T) // unchecked type assertion</code></li>
+<li><code>if v, ok := varI.(T); ok {...} // checked type assertion</code></li>
+<li><code>varI</code> must be an interface variable.</li>
+<li>testing if a value implements an interface.</li>
+</ul>
+</li>
+<li><p>type switch:</p></li>
+</ul>
+
+
+<p>``` go
+switch t := var.(type) { // t can be omited
+case a:</p>
+
+<pre><code>//
+</code></pre>
+
+<p>case b:</p>
+
+<pre><code>//
+</code></pre>
+
+<p>default:</p>
+
+<pre><code>//
+</code></pre>
+
+<p>}
+```</p>
+
+<ul>
+<li><p>An interface value can also be assigned to another interface value, as long as the underlying value implements the necessary methods.</p></li>
+<li><p>Summarized:</p>
+
+<ul>
+<li>Pointer methods can be called with pointers;</li>
+<li>Value methods can be called with values;</li>
+<li>Value-receiver methods can be called with pointer values because they can be dereferenced first.</li>
+<li>Pointer-receiver methods <strong>cannot</strong> be called with values, because the value stored inside an interface has no address.</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Empty Interface</h3>
+
+<ul>
+<li>The <em>empty interface</em> has no methods: <code>type Any interface{}</code>.</li>
+<li>Any variable, any type implements it.</li>
+<li>It can through assignment receive a variable of <strong>any</strong> type.</li>
+<li>Each <code>interface{}</code> takes up 2 words in memory: one word for the type, the other word for either value or pointer to value.</li>
+<li>Can perform templates role in container.</li>
+<li>copying a data-slice in a slice of interface{} <a href="http://code.google.com/p/go-wiki/wiki/InterfaceSlice">dose not work</a>:</li>
+</ul>
+
+
+<p><code>go
+var dataslice []myType = getSlice()
+var interfaceSlice []interface{} = dataslice
+// must be done explicitly with for-range, e.g.
+</code></p>
+
+<ul>
+<li><strong>Overloading</strong> functions: <code>func DoSomething(f int, a ...interface{}) (n int, errno error)</code></li>
+</ul>
+
+
+<h3>Dynamic typing</h3>
+
+<ul>
+<li>In Go, methods and data are treated <em>orthogonally</em>, loosely coupled.</li>
+<li><em>duck typing</em> in dynamic languages like Python and Ruby.</li>
+<li>However, the implementation requirements is <em>statically checked by the compiler</em>;</li>
+</ul>
+
+
+<h3>Object-orientedness of Go: summary</h3>
+
+<ol>
+<li><p>Encapsulation:</p>
+
+<ul>
+<li>only 2 access-levels: <em>package scope</em>, and <em>exported</em>;</li>
+<li>a type can only have methods defined in its own package;</li>
+</ul>
+</li>
+<li><p>Inheritance: embedding of one or more types;</p></li>
+<li><p>Polymorphism: through interface.</p></li>
+</ol>
+
+
+<h2>IX. Reflection</h2>
+
+<h3>Metaprogramming</h3>
+
+<p><code>go
+func TypeOf(i interface{}) Type
+func ValueOf(i interface{}) Value
+</code></p>
+
+<ul>
+<li><code>Kind()</code> function and kind constants;</li>
+<li><code>Interface()</code> recovers the (interface) value;</li>
+<li><p>Modifying a value through reflection:</p>
+
+<ul>
+<li><code>CanSet()</code> -> settability;</li>
+<li><code>v := reflect.ValueOf(x)</code> creates a copy of x;</li>
+<li>to change value of x, must pass the address of x: <code>v := reflect.ValueOf(&amp;x)</code></li>
+<li>to make it settable: <code>v = v.Elem()</code></li>
+</ul>
+</li>
+<li><p>Reflection on structs:</p>
+
+<ul>
+<li><code>NumField()</code> gives the number of fields in the struct;</li>
+<li>call its methods with <code>Method(n).Call(nil)</code>;</li>
+<li>only exported fields of a struct are settable;</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Reflection with <code>unsafe</code></h3>
+
+<p>``` go
+var byteSliceType = reflect.TypeOf(([]byte)(nil))</p>
+
+<p>func AsByteSlice(x interface{}) []byte {</p>
+
+<pre><code>v := reflect.New(reflect.TypeOf(x))
+h := *(*reflect.SliceHeader)(unsafe.Pointer(v.UnsafeAddr()))
+size := int(v.Type().Elem().Size())
+h.Len *= size
+h.Cap *= size
+return unsafe.Unreflect(byteSliceType, unsafe.Pointer(&amp;h)).([]byte)
+// but in Go1 Unreflect are gone?
+</code></pre>
+
+<p>}</p>
+
+<p>// or, if you prefer:</p>
+
+<p>func AsByteSlice(x interface{}) []byte {</p>
+
+<pre><code>v := reflect.New(reflect.TypeOf(x))
+h0 := (*reflect.SliceHeader)(unsafe.Pointer(v.UnsafeAddr()))
+size := int(v.Type().Elem().Size())
+h := reflect.SliceHeader{h0.Data, h0.Len * size, h0.Cap * size}
+return unsafe.Unreflect(byteSliceType, unsafe.Pointer(&amp;h)).([]byte)
+</code></pre>
+
+<p>}
+```</p>
+
+<h3><a href="http://code.google.com/p/go-wiki/wiki/cgo">Turning C arrays into Go slices</a></h3>
+
+<p><code>go
+func C.GoBytes(cArray unsafe.Pointer, length C.int) []byte
+</code></p>
+
+<p>To create a Go slice backed by a C array (without copying the original data), one needs to acquire this length at runtime and use <code>reflect.SliceHeader</code>.</p>
+
+<p>``` go
+import "C"
+import "unsafe"
+//...</p>
+
+<pre><code>    var theCArray *TheCType := C.getTheArray()
+    length := C.getTheArrayLength()
+    var theGoSlice []TheCType
+    sliceHeader := (*reflect.SliceHeader)((unsafe.Pointer(&amp;theGoSlice)))
+    sliceHeader.Cap = length
+    sliceHeader.Len = length
+    sliceHeader.Data = uintptr(unsafe.Pointer(&amp;theCArray[0]))
+    // now theGoSlice is a normal Go slice backed by the C array
+</code></pre>
+
+<p>```</p>
+
+<p>It is important to keep in mind that the Go garbage collector will not interact with this data, and that if it is freed from the C side of things, the behavior of any Go code using the slice is nondeterministic.</p>
+
+<h2>X. Error-handling and Testing</h2>
+
+<ul>
+<li>Always assign an error to a variable within a compound if-statement, making for clearer code.</li>
+<li>Predefined error interface type: <code>type error interface { Error() string }</code>.</li>
+<li>Package <code>errors</code>; function <code>fmt.Errorf()</code>.</li>
+<li><code>syscall.Errno</code>; <code>os.EPERM</code>, etc.</li>
+</ul>
+
+
+<h3><em>defer-panic-and-recover</em> machanism</h3>
+
+<h4>Run-time exceptions and panic</h4>
+
+<ul>
+<li><em>runtime panic</em>: <code>runtime.Error</code>, <code>RuntimeError()</code>;</li>
+<li><em>panicking</em>: <code>panic(...)</code>; all <code>defer</code> statements are guaranteed to execute and then control is given to the function caller, which receivers this call to panic;</li>
+<li>std library <strong>Must</strong> functions, e.g. <code>regexp.MustCompile</code>, <code>template.Must</code>, would <code>panic()</code> when encounter an error;</li>
+</ul>
+
+
+<h4>Recover</h4>
+
+<ul>
+<li><code>recover</code> is only useful when called inside a <em>deferred</em> function: it retrieves the error value passed through the call of panic; when used in normal execution a call to recover will return nil and have no other effect.</li>
+<li>panic causes the stack to unwind until a deferred <code>recover()</code> is found or the program terminates.</li>
+</ul>
+
+
+<p>``` go
+func proect(g func()) {</p>
+
+<pre><code>defer func() {
+    log.Println("done")   
+    if err := recover(); err != nil {
+        log.Printf("runtime panic: %v", err)
+    }
+}()
+log.Println("start")
+g()
+</code></pre>
+
+<p>}
+```</p>
+
+<ul>
+<li><p>custom packages:</p>
+
+<ol>
+<li><em>always recover from panic in your package</em>: no explicit panic() should be allowed to cross a package boundary;</li>
+<li>return errors as error values to the <em>callers of your package</em>.</li>
+</ol>
+</li>
+<li><p>error-handling scheme with closures: (use a slice of empty interface as parameter and return type, to be more general)</p></li>
+</ul>
+
+
+<p>``` go
+func check(err error) { if err != nil { panic(err) } }
+func errorHandler(fn fType1) fType1 {</p>
+
+<pre><code>return func(a type1, b type2) {
+    defer func() {
+        if e, ok := recover().(error); ok {
+            log.Printf("runtime panic: %v", err)
+        }
+    }()
+    fn(a, b)
+}
+</code></pre>
+
+<p>}</p>
+
+<p>func f1(a type1, b type2) {</p>
+
+<pre><code>//...
+f, _, err := // call
+check(err)
+t, err1 := // call
+check(err1)
+//...
+</code></pre>
+
+<p>}</p>
+
+<p>func main() {</p>
+
+<pre><code>errorHandler(f1)
+errorHandler(f2)
+//...
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Testing and Benchmarking in Go</h3>
+
+<ul>
+<li>Test-programs must be within the same package, and the files must have names of the form <code>*_test.go</code>;</li>
+<li><code>_test</code> programs are <strong>NOT</strong> compiled with the normal Go-compilers, and not deployed in production;</li>
+<li>Must <code>import "testing"</code>, with global functions with names starting with <code>TestZzz</code>: <code>func TestAbc(t *testing.T)</code></li>
+<li><p>To signal a failure:</p>
+
+<ol>
+<li><code>func (t *T) Fail()</code>: marks the test function as having failed, but continues its execution;</li>
+<li><code>func (t *T) FailNow()</code>: marks failed and stops its execution; execution continues with the next text <strong>file</strong>;</li>
+<li><code>func (t *T) Log(args ...interface{})</code>: formatted log in the error-log;</li>
+<li><code>func (t *T) Fatal(args ...interface{})</code>: 2+3.</li>
+</ol>
+</li>
+<li><p><code>go test</code> parameters: <code>-v</code> for verbose;</p></li>
+<li><p>Benchmarking-programs must contains functions starting with <code>BenchmarkZzz</code>: <code>func BenchmarkZyx(b *testing.B)</code></p></li>
+<li>Table-driven tests: use an array to collect the test-inputs and the expected results together;</li>
+</ul>
+
+
+<h3>Tuning and profiling</h3>
+
+<ul>
+<li><code>go test -x -v -cpuprofile=prof.out -file x_test.go</code></li>
+<li>with <code>runtime/pprof</code>:</li>
+</ul>
+
+
+<p><code>go CPUProfile.go
+f, err := os.Create(*cpuprofile)
+pprof.StartCPUProfile(f)
+defer pprof.StopCPUProfile()
+f.Close()
+</code></p>
+
+<p><code>go MemoryProfile.go
+f, err := os.Create(*memprofile)
+pprof.WriteHeapProfile(f)
+f.Close()
+</code></p>
+
+<ul>
+<li><a href="http://code.google.com/p/google-perftools/">gopprof</a></li>
+<li><a href="http://blog.golang.org/2011/06/profiling-go-programs.html">Profiling Go Programs</a></li>
+</ul>
+
+
+<h2>XI. Multithreading</h2>
+
+<h3>Goroutine</h3>
+
+<ul>
+<li>GOMAXPROCS is equal to the number of (concurrent) threads, on a machine with more than 1 core, as many threads as there are cores can run in parallel.</li>
+<li>When the function <code>main()</code> returns, the program exits: it does not wait for other goroutines to complete.</li>
+<li>The logic of code must be independent of the order in which goroutines are invoked.</li>
+</ul>
+
+
+<h4>goroutines vs. coroutines</h4>
+
+<ol>
+<li>goroutines imply parallelism (or can deployed in parallel), coroutines in general do not</li>
+<li>goroutines communicate via channels; coroutines communicate via yield and resume operations</li>
+</ol>
+
+
+<h3>Channel: communication &amp; synchronization</h3>
+
+<ul>
+<li>Only one goroutine has access to a data item at any given time: so data races cannot occur, by design;</li>
+<li><code>var identifier chan datatype</code>; reference type;</li>
+<li>a channel of channels of int: <code>chanOfChans := make(chan chan int)</code></li>
+<li>a channel of functions: <code>funcChan := chan func()</code></li>
+<li>communication operator: <code>&lt;-</code></li>
+<li>The channel <em>send</em> and <em>receive</em> operations are atomic: they always complete without interruption.</li>
+<li><em>Don’t use print statements to indicate the order of sending to and receiving from a channel: this could be out of order with what actually happens due to the time lag between the print statement and the actual channel sending and receiving</em>.</li>
+<li>By default, communication is synchronous and unbuffered: sends do not complete until there is a receiver to accept the value.</li>
+<li>Buffered channel: <code>ch1 := make(chan string, buf)</code></li>
+<li>Sending to a buffered channel will not block unless the buffer is full; reading from a buffered channel will not block unless the buffer is empty.</li>
+</ul>
+
+
+<h2>XII. Network</h2>
+
+<ul>
+<li><code>net</code> <a href="http://golang.org/pkg/net/">package</a>.</li>
+<li>For web applications: <code>text/template</code>, <code>net/http</code> packages.</li>
+<li><code>net/rpc</code>.</li>
+</ul>
+
+
+<h2>XIII. Common Go pitfalls and mistakes</h2>
+
+<ol>
+<li>Never use the value in a for-range loop to change the value itself;</li>
+<li>Never use <code>goto</code> with a preceding label;</li>
+<li>Never forget <code>()</code> after a function-name, specifically when calling on a receiver or invoking a lambda function;</li>
+<li>Never use <code>new()</code> with maps, always <code>make</code>;</li>
+<li>Never forget to use <code>Flush()</code> when terminating buffered writing;</li>
+<li>Do not use global variables or shared memory for concurrent programs;</li>
+<li><p>Use println only for debugging purpose;</p></li>
+<li><p>Initialize a slice of maps the right way;</p></li>
+<li>Always use the comma, ok form for type assertions;</li>
+<li>Make and initialize your types with a factory;</li>
+<li><p>Use a pointer as a receiver for a method on a struct only when the method modifies the structure, otherwise use a value;</p></li>
+<li><p>One should use a <code>bytes.Buffer</code> to accumulate string content, when concatenating strings.</p></li>
+<li>Due to compiler-optimizations and depending on the size of the strings using a Buffer only starts to become more efficient when the number of iterations is > 15;</li>
+<li><code>defer</code> is only executed at the <code>return</code> of a function, not at the end of a loop or some other limited scope;</li>
+<li>No need to pass a pointer to a slice to a function;</li>
+<li>Never use a pointer to an interface type, this is already a pointer;</li>
+<li>Use goroutines and channels only where concurrency is important;</li>
+<li>Goroutines will probably not begin executing until after the loop;</li>
+<li>For error handling, do not use booleans.</li>
+</ol>
+
+
+<p><em>To be continued</em></p>
+]]></content>
+  </entry>
+  
+</feed>

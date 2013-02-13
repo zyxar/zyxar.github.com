@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>25 Recipes for Getting Started with R - Mark's Logs</title>
+  <meta name="author" content="Marcus Zy">
+
+  
+  <meta name="description" content="1. Downloading and Installing R Noting special 2. Getting Help on a Function help(), args(), example(), ?func 3. Viewing the Supplied Documentation &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mark's Logs" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Mark's Logs</a></h1>
+  
+    <h2>Reading, thinking, and seeing.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zyxar.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">25 Recipes for Getting Started With R</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T20:42:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>1. Downloading and Installing R</h2>
+
+<p><em>Noting special</em></p>
+
+<h2>2. Getting Help on a Function</h2>
+
+<p><code>help()</code>, <code>args()</code>, <code>example()</code>, <code>?func</code></p>
+
+<h2>3. Viewing the Supplied Documentation</h2>
+
+<p><code>help.start()</code></p>
+
+<h2>4. Searching the Web for Help</h2>
+
+<p><code>RSiteSearch("hey phrase")</code></p>
+
+<h2>5. Reading Tabular Datafiles</h2>
+
+<pre><code>read.table("target.txt", stringsAsFactor=FALSE)
+</code></pre>
+
+<p><em>will prevent <code>read.table()</code> from interpreting character string as factor</em>.</p>
+
+<p>Other options: <em><code>na.strings="."</code></em>, <em><code>header=T</code></em>, etc.</p>
+
+<h2>6. Reading from CSV Files</h2>
+
+<pre><code>read.csv("filename", header=T, as.is=T)
+</code></pre>
+
+<p><code>as.is=T</code> indicates that <strong>R</strong> should not interpret nonnumeric data as a <em>factor</em>.</p>
+
+<h2>7. Creating a Vector</h2>
+
+<p><code>c(...)</code></p>
+
+<h2>8. Computing Basic Statistics</h2>
+
+<ul>
+<li><code>na.rm=T</code> ignore <em>NA</em> values in data, otherwise result would be invalidated;</li>
+<li><code>lapply()</code> is magic.</li>
+</ul>
+
+
+<h2>9. Initializing a Data Frame from Column Data</h2>
+
+<pre><code>dfrm &lt;- data.frame(v1, v2, v3, v4)
+dfrm &lt;- as.data.frame(list.of.vectors)
+</code></pre>
+
+<h2>10. Selecting Data Frame Column by Position</h2>
+
+<ul>
+<li><code>dfrm[[n]]</code>, <code>dfrm[, n]</code>: returns <em>n</em>th column;</li>
+<li><code>dfrm[n]</code>: returns a data frame of <em>n</em>th column;</li>
+<li><code>dfrm[c(n1, n2, ..., nk)]</code>, <code>dfrm[, c(n1, n2, ..., nk)]</code>: returns a data frame of <em>k</em> columns.</li>
+</ul>
+
+
+<h2>11. Selecting Data Frame column by Name</h2>
+
+<p>Similar to the previous section.</p>
+
+<ul>
+<li><code>dfrm[["name"]]</code>, <code>dfrm$name</code>: returns <em>one column</em>, called <em>name</em>;</li>
+<li><code>dfrm["name"]</code>, <code>dfrm[c("name1", "name2", ..., "name3")]</code>, <code>dfrm[, "name"]</code>, <code>dfrm[, c(...)]</code>.</li>
+</ul>
+
+
+<h2>12. Forming a Confidence Interval for a Mean</h2>
+
+<ul>
+<li><code>t.test(x)</code>: apply to sample <em>x</em>, to determine a confidence interval;</li>
+<li><code>conf.level</code> argument: see intervals at other levels.</li>
+</ul>
+
+
+<h2>13. Forming a Confidence Interval for a Proportion</h2>
+
+<ul>
+<li><code>prop.test(n, x)</code>: sample size <em>n</em>, <em>x</em> successes;</li>
+<li>use <code>conf.level</code> argument for other confidence levels.</li>
+</ul>
+
+
+<h2>14. Comparing the Means of Two Samples</h2>
+
+<p>By default, <code>t.test()</code> assumes data is not paired. Test with two sample <em>x</em>, <em>y</em>:</p>
+
+<pre><code>t.test(x, y, paired=T)
+</code></pre>
+
+<h2>15. Testing a Correlation for Significance</h2>
+
+<ul>
+<li><code>cor.test(x, y, method="Spearman")</code> for nonnormally data; default is <em>Pearson</em> method.</li>
+<li>the function returns several values, including <em>p</em>-value from the test of significance. <u><em>p</em> &lt; 0.05</u> indicates that the correlation is likely significant; otherwise, not.</li>
+</ul>
+
+
+<h2>16. Creating a Scatter Plot</h2>
+
+<ul>
+<li><code>plot(x, y)</code>: two parallel vectors <em>x</em> and <em>y</em>;</li>
+<li><code>plot(dfrm)</code>: for data frame.</li>
+</ul>
+
+
+<h2>17. Creating a Bar Chart</h2>
+
+<ul>
+<li><code>barplot(vector)</code>;</li>
+<li>ref <code>tapply()</code>;</li>
+<li><code>barchart()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>18. Creating a Box Plot</h2>
+
+<ul>
+<li><code>boxplot(vector)</code></li>
+</ul>
+
+
+<h2>19. Creating a Histogram</h2>
+
+<ul>
+<li><code>hist(vector, number.of.bins)</code>: 7 bins by default;</li>
+<li><code>histogram()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>20. Performing Simple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ x)</code>: <code>y ~ x</code> is a <em>model formula</em></li>
+</ul>
+
+
+<h2>21. Performing Multiple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ u + v + w)</code></li>
+</ul>
+
+
+<h2>22. Getting Regression Statistics</h2>
+
+<ul>
+<li><p><code>m &lt;- lm(y ~ u + v + w)</code></p>
+
+<pre><code>  anova(m)                        ANOVA table
+  coef(m), coefficients(m)        Model coefficients
+  confint(m)                      Confidence intervals for the regression coefficients
+  deviance(m)                     Residual sum of squares
+  effects(m)                      Vector of orthogonal effects
+  fitted(m)                       Vector of fitted *y* values
+  resid(m), residuals(m)          Model residuals
+  summary(m)                      Key statistics
+  vcov(m)                         Variance-covariance matrix of the main parameters
+</code></pre></li>
+</ul>
+
+
+<h2>23. Diagnosing a Linear Regression</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>m <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ x<span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>m<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>library<span class="p">(</span>car<span class="p">)</span>
+</span><span class='line'>outlier.test<span class="p">(</span>m<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>24. Predicting New Values</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>m <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ u <span class="o">+</span> v <span class="o">+</span> w<span class="p">)</span>
+</span><span class='line'>preds <span class="o">&lt;-</span> data.frame<span class="p">(</span>u<span class="o">=</span><span class="m">3.1</span><span class="p">,</span> v<span class="o">=</span><span class="m">4.0</span><span class="p">,</span> w<span class="o">=</span><span class="m">5.5</span><span class="p">)</span>
+</span><span class='line'>predict<span class="p">(</span>m<span class="p">,</span> newdata<span class="o">=</span>preds<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>preds <span class="o">&lt;-</span> data.frame<span class="p">(</span>
+</span><span class='line'>            u<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">),</span>
+</span><span class='line'>            v<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">),</span>
+</span><span class='line'>            w<span class="o">=</span>c<span class="p">(</span><span class="m">...</span><span class="p">))</span>
+</span><span class='line'>predict<span class="p">(</span>m<span class="p">,</span> newdata<span class="o">=</span>preds<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>use <code>interval="prediction"</code> argument of <code>predict()</code> to obtain the confidence intervals.</li>
+</ul>
+
+
+<h2>25. Accessing the Functions in a Package</h2>
+
+<ul>
+<li><code>library(packagename)</code>;</li>
+<li><code>detach(package:name)</code>;</li>
+<li>higher function <strong>masks</strong> the lower function.</li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marcus Zy</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T20:42:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/book/'>Book</a>, <a class='category' href='/blog/categories/reading/'>Reading</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/" data-via="zyxar" data-counturl="http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/03/data-mashups-in-r/" title="Previous Post: Data Mashups in R">&laquo; Data Mashups in R</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/03/remote-exposure/" title="Next Post: Remote Exposure">Remote Exposure &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/19/n9/">N9, MeeGo, et al</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/08/go-lang-notes/">Go Lang Notes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/10/install-name-on-os-x/">install_name on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/remote-exposure/">Remote Exposure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/25-recipes-for-getting-started-with-r/">25 Recipes for Getting Started with R</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zyxar">@zyxar</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zyxar',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("zyxar", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zyxar" class="twitter-follow-button" data-show-count="false">Follow @zyxar</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Marcus Zy -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zyxar';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/';
+        var disqus_url = 'http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>N9, MeeGo, et al - Mark's Logs</title>
+  <meta name="author" content="Marcus Zy">
+
+  
+  <meta name="description" content="Tools Nokia Suite: limited support, for backup and sync
+Contacts: cannot sync group
+only on Windows NokiaLink: for OS X
+for Windows Qt SDK for OS X, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zyxar.github.com/blog/2012/11/19/n9/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mark's Logs" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Mark's Logs</a></h1>
+  
+    <h2>Reading, thinking, and seeing.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zyxar.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">N9, MeeGo, Et Al</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-19T17:39:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Tools</h2>
+
+<ol>
+<li>Nokia Suite:
+
+<ul>
+<li>limited support, for backup and sync</li>
+<li>Contacts: cannot sync group</li>
+<li>only on <a href="http://nds1.nokia.com/files/support/global/phones/software/Nokia_Suite_webinstaller_ALL.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://nokia.com/nokialink">NokiaLink</a>:
+
+<ul>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.dmg">OS X</a></li>
+<li>for <a href="http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://www.developer.nokia.com/Develop/Qt/Tools/">Qt SDK</a>
+
+<ul>
+<li>for OS X, Windows and Linux; online or offline</li>
+<li>Developer account required</li>
+</ul>
+</li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php">Flasher</a>
+
+<ul>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=MacFlasher_3.12.1.dmg">OS X</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_amd64.deb">Linux-x64</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_i386.deb">Linux-x86</a></li>
+<li><a href="http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=WinFlasher_3.12.1.exe">Windows</a></li>
+</ul>
+</li>
+<li><a href="http://harmattan-dev.nokia.com/pool/">Repository</a>
+
+<ul>
+<li><a href="https://downloads.maemo.nokia.com">Official</a></li>
+<li><a href="http://my-meego.com/">My MeeGo</a></li>
+</ul>
+</li>
+</ol>
+
+
+<h2>Dev Mode</h2>
+
+<ul>
+<li>Settings -> Security -> Developer mode</li>
+</ul>
+
+
+<h2>Remove Native Apps?</h2>
+
+<ul>
+<li>Native apps for Chinese Mainland, such as <code>qunar</code>, <code>kaixin</code>, cannot be purged before applying some tricks.</li>
+<li>Package <code>mp-harmattan-003-pr</code> has dependencies on those apps, which if been removed, the phone would be frozen as a rock.</li>
+<li>This <a href="https://gitorious.org/mp-harmattan-003-pr/mp-harmattan-003-pr">site</a> provides a work round, a patched package.</li>
+</ul>
+
+
+<h2>Selected Apps</h2>
+
+<ol>
+<li>Foursquare: <a href="http://my-meego.com/downloads/sendfile.php?DownloadID=285">download</a> and <code>dpkg -i</code></li>
+<li>Skype: <code>apt-get install account-plugin-skype l10n-app-skype</code></li>
+<li>Gtalk: <code>apt-get install account-plugin-google-talk l10n-app-google</code></li>
+<li>Twitter: <code>apt-get install twitter l10n-app-twitter webupload-service-twitter</code></li>
+<li>Facebook: <code>apt-get install facebook l10n-app-facebook webupload-service-facebook</code></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marcus Zy</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-19T17:39:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/notes/'>Notes</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zyxar.github.com/blog/2012/11/19/n9/" data-via="zyxar" data-counturl="http://zyxar.github.com/blog/2012/11/19/n9/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/08/go-lang-notes/" title="Previous Post: Go Lang Notes">&laquo; Go Lang Notes</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/19/n9/">N9, MeeGo, et al</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/08/go-lang-notes/">Go Lang Notes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/10/install-name-on-os-x/">install_name on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/remote-exposure/">Remote Exposure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/25-recipes-for-getting-started-with-r/">25 Recipes for Getting Started with R</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zyxar">@zyxar</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zyxar',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("zyxar", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zyxar" class="twitter-follow-button" data-show-count="false">Follow @zyxar</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Marcus Zy -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zyxar';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zyxar.github.com/blog/2012/11/19/n9/';
+        var disqus_url = 'http://zyxar.github.com/blog/2012/11/19/n9/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

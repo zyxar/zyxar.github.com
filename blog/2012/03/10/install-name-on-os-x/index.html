@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>install_name on OS X - Mark's Logs</title>
+  <meta name="author" content="Marcus Zy">
+
+  
+  <meta name="description" content="On OS X, the loader dyld does have a search path, defined in the DYLD_FRAMEWORK_PATH and DYLD_LIBRARY_PATH variables. However, these are empty on OS &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mark's Logs" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Mark's Logs</a></h1>
+  
+    <h2>Reading, thinking, and seeing.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zyxar.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Install_name on OS X</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-10T20:29:00+08:00" pubdate data-updated="true">Mar 10<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>On OS X, the loader <code>dyld</code> does have a search path, defined in the <code>DYLD_FRAMEWORK_PATH</code> and <code>DYLD_LIBRARY_PATH</code> variables. However, these are empty on OS X by default, so they rarely matter.</p>
+
+<p>Sometimes, we want to install a third-party library to a location, which is not system-defined, not <em>/usr/local/lib</em> nor <em>/usr/lib</em>, for some personal reasons or when you did not have root privilege. Suppose it was <em>libdummy</em>. If <em>libdummy</em>&#8217;s <strong>install_name</strong> was just libdummy.1.dylib or so, and you were building a program which links against libdummy. After the compilation, you checked the shared libraries your program used:</p>
+
+<pre><code>otool -L program
+</code></pre>
+
+<p>then you could see libdummy.1.dylib in the output, just <em>libdummy.1.dylib</em> in that line. Ja, the linker stored <em>install_name</em> there, not the location of the library.
+Then you let the program run, but the <code>dyld</code> said it could not find the proper libdummy.1.dylib. That&#8217;s the story a lot of people would experience on OS X.</p>
+
+<p>On Linux, we could modify <em>/etc/ld.so.conf</em> in order to include some other directories when the loader searches for a library. However, on OS X things are different. Also, we would not like to set <em>DYLD_</em> variables every time launching the program, nor add those variables in <em>.zshrc</em>, <em>.bashrc</em>, &#8230;</p>
+
+<p>De facto, as we know <strong>install_name</strong> matters, we could simply employ it.</p>
+
+<p>On Darwin platform, <code>gcc</code> has some platform dependent options, such as <code>-dynamic</code>, <code>-arch</code>, <code>-bundle</code>, and <code>-install_name</code> plays an important role here.</p>
+
+<pre><code>gcc -o libdummy.dylib -install_name ${PREFIX}/lib/libdummy.dylib ...
+</code></pre>
+
+<p>would set <strong>install_name</strong> for libdummy.dylib to a well-defined path. Next time when linking your program against libdummy, the linker would store that path. Use <code>otool -D</code> to print the <strong>install_nam</strong> for specified library.</p>
+
+<p>Besides absolute paths, we could use other techniques as well:
+<strong>@executable_path</strong>, <strong>@loader_path</strong>, <strong>@rpath</strong>. This <a href="https://wincent.com/wiki/@executable_path,_@load_path_and_@rpath">article</a> describes these very well.</p>
+
+<p>For already built libraries and programs, there is no need to rebuild them. On OS X, there is a very useful tool: <code>install_name_tool</code>.</p>
+
+<ul>
+<li>change <strong>install_name</strong> for a library:
+  <code>install_name_tool -id "new_install_name" libdummy.dylib</code></li>
+<li>change linked <strong>install_name</strong> in a program:
+  <code>install_name_tool -change "old_install_name" "new_install_name" program</code></li>
+</ul>
+
+
+<p>One more thing. If you use <code>cmake</code> to generate Makefile for you project, you could solve the <strong>install_name</strong> issue like <a href="http://www.cmake.org/pipermail/cmake/2011-April/043826.html">this</a>:</p>
+
+<pre><code>SET(CMAKE_INSTALL_NAME_DIR @executable_path)
+</code></pre>
+
+<p>Replace <em>@executable_path</em> with your own choice.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marcus Zy</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-10T20:29:00+08:00" pubdate data-updated="true">Mar 10<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x/" data-via="zyxar" data-counturl="http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/03/remote-exposure/" title="Previous Post: Remote Exposure">&laquo; Remote Exposure</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/04/08/go-lang-notes/" title="Next Post: Go Lang Notes">Go Lang Notes &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/19/n9/">N9, MeeGo, et al</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/08/go-lang-notes/">Go Lang Notes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/10/install-name-on-os-x/">install_name on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/remote-exposure/">Remote Exposure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/03/25-recipes-for-getting-started-with-r/">25 Recipes for Getting Started with R</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zyxar">@zyxar</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zyxar',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("zyxar", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zyxar" class="twitter-follow-button" data-show-count="false">Follow @zyxar</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Marcus Zy -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zyxar';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x/';
+        var disqus_url = 'http://zyxar.github.com/blog/2012/03/10/install-name-on-os-x/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Book | Mark's Logs]]></title>
+  <link href="http://zyxar.github.com/blog/categories/book/atom.xml" rel="self"/>
+  <link href="http://zyxar.github.com/"/>
+  <updated>2013-02-14T00:49:54+08:00</updated>
+  <id>http://zyxar.github.com/</id>
+  <author>
+    <name><![CDATA[Marcus Zy]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Remote Exposure]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/03/remote-exposure/"/>
+    <updated>2012-03-03T20:44:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/03/remote-exposure</id>
+    <content type="html"><![CDATA[<h2>1. Choosing the Right Equipment</h2>
+
+<h3>Cameras</h3>
+
+<ul>
+<li><p>Film SLR is still a popular camera choice for a remote expedition.</p>
+
+<ul>
+<li>old manual SLRs, as well as most rangefinders, possess a mechanical shutter system that can operate without any power source;</li>
+<li><strong>downsides</strong>: no instantly review; more experience needed; physical medium of film;</li>
+<li>fSLR can be a great backup.</li>
+</ul>
+</li>
+<li><p>DSLRs</p>
+
+<ul>
+<li>pros: larger sensors, modular and interchangeable lenses, live view, longer battery life, faster, auto-bracketing;</li>
+<li>cons: heavier and bulkier;</li>
+<li><em>HDR</em> capability.</li>
+</ul>
+</li>
+<li><p>Compact Cameras</p>
+
+<ul>
+<li><strong>disadvantages</strong>: heavy noise, low battery life, slow autofocus, shutter lag, non-interchangeable lenses; even no viewfinder; lack of 'RAW';</li>
+<li>considerable <em>only</em> when:
+
+<ol>
+<li>the climb is very difficult: light weight is more important than bringing back good images;</li>
+<li>snapshots to complement your personal memories;</li>
+<li>a high-end compact could serve as a useful backup.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>EVILs (Electonic Viewfinder Interchangeable Lens Cameras)</p>
+
+<ul>
+<li>designed for street photography; close to APS-C DSLRs (with consumer lenses);</li>
+<li>cons: absence of an optical viewfinder;</li>
+<li>trade-off between weight and some special features and more choices in lenses (against DSLR).</li>
+</ul>
+</li>
+<li><p>The Big Stuff</p>
+
+<ul>
+<li>a bad idea.</li>
+</ul>
+</li>
+<li><p><strong>Summary</strong></p>
+
+<ul>
+<li>DSLR or EVIL; compact as a backup.</li>
+<li>it depends.</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Lenses</h3>
+
+<ul>
+<li>balance versatility and features with weight and portability;</li>
+<li>no need to focus on large apertures;</li>
+<li>sometimes it is inconvenient to change lenses;</li>
+<li>a wide lens is generally the most useful; <em>default</em> choice;</li>
+<li>oftentimes, telephoto lenses are a necessity; 200mm should be enough; <em>secondary</em> choice;</li>
+<li>ultra wide lenses are tricky to use;</li>
+<li>prime lenses: for experienced;</li>
+<li>gather some statistics in photo archives.</li>
+</ul>
+
+
+<h3>Carrying Systems</h3>
+
+<ul>
+<li><strong>have your camera accessible at all times</strong>;</li>
+<li>backpack with survival items;</li>
+<li>without fuss;</li>
+<li>size should be adapted;</li>
+<li>all the equipment you might use should be accessible;</li>
+<li>reasonably weather resistant;</li>
+<li>simple design: internal separators and a small pocket for memory cards and batteries;</li>
+<li>lightweight;</li>
+<li><em>camera backpacks</em> are worst, <em>chest</em> bag and <em>shoulder</em> bag are not that good;</li>
+<li>a <em>belt system</em> is the best solution: a padded belt and a few detachable pouches.</li>
+</ul>
+
+
+<h3>Battery and Memory Strategies</h3>
+
+<ul>
+<li>at least enough cards to get you through one day of shooting;</li>
+<li><em>cold is the deadliest threat to batteries</em>;</li>
+<li>careful and constant monitoring power sources;</li>
+</ul>
+
+
+<h3>Odds and Ends</h3>
+
+<ul>
+<li>lens caps, <em>UV filters</em>;</li>
+<li><em>lens hoods</em>;</li>
+<li><em>microfiber cloth</em>;</li>
+<li>need permission from every recognizable person in images;</li>
+</ul>
+
+
+<h3>Dead Weight</h3>
+
+<ul>
+<li>tripod: isn't very useful in the mountains -> find a platform stable enough;</li>
+<li>artifical lighting: flash is more trouble than help;</li>
+<li>filters: UV or clear filters only;</li>
+<li>laptop: no;</li>
+</ul>
+
+
+<h3>Bring with</h3>
+
+<ul>
+<li><p>For Hiking and Less Demanding Climbs, e.g.:</p>
+
+<ul>
+<li>Nikon D90 w/ 2+ batteries, 12GB SD cards;</li>
+<li>Nikkor 16-35mm f/4 VR, 70-300mm f/4.5-5.6 VR (equipped w/ UV);</li>
+<li>Think Tank Skin belt system;</li>
+</ul>
+</li>
+<li><p>For Difficult Climbs, e.g.:</p>
+
+<ul>
+<li>EP-1 Pen m43, w/ 12GB SD cards;</li>
+<li>Zuiko 14-42mm f/3.5-5.6;</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<hr />
+
+<h2>2. Shooting</h2>
+
+<h3>When to Shoot</h3>
+
+<ul>
+<li>be psychologically prepared to stop in very inconvenient places; no fuss;</li>
+<li>checklist:
+
+<ul>
+<li>how safe is it to stop now?</li>
+<li>how are your partners going to react?</li>
+<li>how long is the photo opportunity likely to last?</li>
+<li>how good is the image going to be?</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Caring for Your Gear</h3>
+
+<ul>
+<li>weather protection, cold;</li>
+<li>water (humidity, rain), <em>condensation</em>;</li>
+<li>dust -> be extra careful;</li>
+<li>how <strong>NOT</strong> to drop stuff:
+
+<ul>
+<li>connect the camera strap to harness or bag;</li>
+<li>climbing sling;</li>
+</ul>
+</li>
+<li><em>Safety</em>:
+
+<ul>
+<li>always pack anything fragile or expensive as carry-on luggage;</li>
+<li>never leave bags out of your sight;</li>
+<li>keep 'em attached;</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>A Complete Workflow</h3>
+
+<ul>
+<li>keep an eye out and an open mind for any potential photo;</li>
+<li>assess enviornment;</li>
+<li>communicate with partners;</li>
+<li>anchor yourself somewhere when needed;</li>
+<li>check the histogram;</li>
+<li>blahblahblah...</li>
+</ul>
+
+
+<h3>Exposure</h3>
+
+<ul>
+<li>snow: compensation to eliminate underexposing;</li>
+<li>ETTR (Expose To The Right): only against RAW, w/ post-processing;</li>
+<li>high contrast: use HDR, check histogram;</li>
+</ul>
+
+
+<hr />
+
+<h2>3. Creating Powerful Images</h2>
+
+<h3>Be Inspired</h3>
+
+<ul>
+<li>have something to say, and express it through photography;</li>
+</ul>
+
+
+<h3>Quantity vs. Quality</h3>
+
+<ul>
+<li>give you mileage;</li>
+<li>occasionally stumble upon hidden gems;</li>
+<li>you are not obligated to produce a masterpiece each time;</li>
+<li>photo opportunities are both unique and short-lived;</li>
+<li>images are great memories;</li>
+<li>heavy editing;</li>
+<li>shooting a lot replaces critical thinking and is only masking the photographer's laziness of finding the optimal viewpoint for a scene.</li>
+</ul>
+
+
+<h3>Composition</h3>
+
+<p>Do <em>NOT</em> overestimate the checklist:</p>
+
+<ul>
+<li>rule of thirds;</li>
+<li>direct attention to a subject by color and light;</li>
+<li>strong shapes and lines;</li>
+<li>edges of an image are a sensitive area;</li>
+<li>out-of-focus background are important;</li>
+<li>leave plenty of space in image when subject is moving or looking in a direction;</li>
+<li>simpler composition -> stronger image.</li>
+</ul>
+
+
+<p><em>Through experience, by shooting thousands of images and seeing thousands more, both good and bad</em>.</p>
+
+<h3>The Story</h3>
+
+<ul>
+<li>put the image into words -> simply describe it;</li>
+<li>not to <em>explain</em> the story with extra info that does not show in the image.</li>
+</ul>
+
+
+<h3>More Practicaly</h3>
+
+<ul>
+<li>learn to see light and treat it as a subject in its own right;</li>
+<li>search for the optimal point of view;</li>
+<li>observer the weather, and make it another one of your subject;</li>
+<li>mountains are vertical environments;</li>
+<li>natural scenes look the same at any scale;</li>
+<li>get the timing just right when action shooting;</li>
+<li>pay attention to the backgrounds;</li>
+<li>place people in their enviroment unless for portraits;</li>
+<li>diversity of genres;</li>
+<li>break the rules, and experiment.</li>
+</ul>
+
+
+<hr />
+
+<h2>4. Discipline Specific</h2>
+
+<p>Four categories: camping, hiking, technical climbing, and mountaineering.</p>
+
+<h3>Camping</h3>
+
+<ul>
+<li>best light: sun is low;</li>
+<li>keep things simple, though getting good images of a campsite can be surprisingly difficult;</li>
+<li>opportunities: night, sunset;</li>
+</ul>
+
+
+<h3>Hiking</h3>
+
+<p>hiking is the easiest of the three different outdoor disciplines</p>
+
+<ul>
+<li>hiking scenes can lack visual drama;</li>
+<li>figure out the path;</li>
+<li>build your image backwards -> from backgrounds to foregrounds;</li>
+<li>place other hikers out of focus;</li>
+<li>faces creat very powerful photographs;</li>
+<li>alone? stable platform + self-timer;</li>
+</ul>
+
+
+<h3>Technical Climbing</h3>
+
+<ul>
+<li>perspective is the most important element of composition;</li>
+<li>show the face (of the leader);</li>
+<li>pay attention to backgrounds;</li>
+<li>the last important element is action;</li>
+<li>offer to send unknown climbers your pictures.</li>
+</ul>
+
+
+<h3>Mountaineering</h3>
+
+<ul>
+<li>the composition advice from the previous sections all apply;</li>
+<li>make the effort to look for good photo opportunities;</li>
+</ul>
+
+
+<hr />
+
+<h2>5. Advanced Techniques</h2>
+
+<h3>Low Light and Night Photography</h3>
+
+<ul>
+<li>full aperture -> but reduce depth of field;</li>
+<li>close the aperture until the depth of field is large enough to includes your subject;</li>
+<li>(unless shooting film) incress ISO;</li>
+<li>tripod -> tough: mirror lock-up, remote trigger, self-timer,etc;</li>
+<li>long exposure times will only work with relatively static subjects;</li>
+<li>metering and focus;
+
+<ul>
+<li>full manual mode;</li>
+<li>test until acceptable exposure has been obtained;</li>
+</ul>
+</li>
+<li>sometimes, use a flash/strobe;</li>
+</ul>
+
+
+<h3>Panoramic Images</h3>
+
+<ul>
+<li>a tripod and a panorama head;</li>
+<li>is panorama essential?</li>
+<li>select a focal length;</li>
+<li>post-process.</li>
+<li>manual exposure w/ tests, to avoid zebra looking in stitched final image;</li>
+<li>take all the pictures in as short a time as possible;</li>
+<li>repeat the entire process if necessary;</li>
+</ul>
+
+
+<h3>HDR</h3>
+
+<ul>
+<li>check histogram: whether it is cut off at <strong>both</strong> ends;</li>
+<li>otherwise, adjust the exposure compensation;</li>
+<li>auto-bracketing;</li>
+</ul>
+
+
+<h3>Video</h3>
+
+<ul>
+<li>careful planning;</li>
+<li>a closeup of a face;</li>
+<li>a mid-range shot;</li>
+<li>a closeup of hands;</li>
+<li>a point-of-view shot;</li>
+<li>get creative;</li>
+<li>composition rules from previous chapters;</li>
+<li>sound should never be underestimated;</li>
+<li>take it easy on the effects.</li>
+</ul>
+
+
+<hr />
+
+<h2>6. Closing Thoughts</h2>
+
+<h3>Ethics and Photo Manipulations</h3>
+
+<p><strong>The only question is who should do the manipulation, the user or the camera.</strong></p>
+
+<ul>
+<li>minor modifications and scene-changing modifications;</li>
+<li>be honest about your choices;</li>
+<li>photo manipulations are subjective;</li>
+</ul>
+
+
+<h3>Safety and the Environment</h3>
+
+<ul>
+<li>safety 1st;</li>
+<li>seek proper instr before venturing into wildnerness areas;</li>
+<li><a href="www.lnt.org">leave no trace philosophy</a></li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[25 Recipes for Getting Started with R]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r/"/>
+    <updated>2012-03-03T20:42:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/03/25-recipes-for-getting-started-with-r</id>
+    <content type="html"><![CDATA[<h2>1. Downloading and Installing R</h2>
+
+<p><em>Noting special</em></p>
+
+<h2>2. Getting Help on a Function</h2>
+
+<p><code>help()</code>, <code>args()</code>, <code>example()</code>, <code>?func</code></p>
+
+<h2>3. Viewing the Supplied Documentation</h2>
+
+<p><code>help.start()</code></p>
+
+<h2>4. Searching the Web for Help</h2>
+
+<p><code>RSiteSearch("hey phrase")</code></p>
+
+<h2>5. Reading Tabular Datafiles</h2>
+
+<pre><code>read.table("target.txt", stringsAsFactor=FALSE)
+</code></pre>
+
+<p><em>will prevent <code>read.table()</code> from interpreting character string as factor</em>.</p>
+
+<p>Other options: <em><code>na.strings="."</code></em>, <em><code>header=T</code></em>, etc.</p>
+
+<h2>6. Reading from CSV Files</h2>
+
+<pre><code>read.csv("filename", header=T, as.is=T)
+</code></pre>
+
+<p><code>as.is=T</code> indicates that <strong>R</strong> should not interpret nonnumeric data as a <em>factor</em>.</p>
+
+<h2>7. Creating a Vector</h2>
+
+<p><code>c(...)</code></p>
+
+<h2>8. Computing Basic Statistics</h2>
+
+<ul>
+<li><code>na.rm=T</code> ignore <em>NA</em> values in data, otherwise result would be invalidated;</li>
+<li><code>lapply()</code> is magic.</li>
+</ul>
+
+
+<h2>9. Initializing a Data Frame from Column Data</h2>
+
+<pre><code>dfrm &lt;- data.frame(v1, v2, v3, v4)
+dfrm &lt;- as.data.frame(list.of.vectors)
+</code></pre>
+
+<h2>10. Selecting Data Frame Column by Position</h2>
+
+<ul>
+<li><code>dfrm[[n]]</code>, <code>dfrm[, n]</code>: returns <em>n</em>th column;</li>
+<li><code>dfrm[n]</code>: returns a data frame of <em>n</em>th column;</li>
+<li><code>dfrm[c(n1, n2, ..., nk)]</code>, <code>dfrm[, c(n1, n2, ..., nk)]</code>: returns a data frame of <em>k</em> columns.</li>
+</ul>
+
+
+<h2>11. Selecting Data Frame column by Name</h2>
+
+<p>Similar to the previous section.</p>
+
+<ul>
+<li><code>dfrm[["name"]]</code>, <code>dfrm$name</code>: returns <em>one column</em>, called <em>name</em>;</li>
+<li><code>dfrm["name"]</code>, <code>dfrm[c("name1", "name2", ..., "name3")]</code>, <code>dfrm[, "name"]</code>, <code>dfrm[, c(...)]</code>.</li>
+</ul>
+
+
+<h2>12. Forming a Confidence Interval for a Mean</h2>
+
+<ul>
+<li><code>t.test(x)</code>: apply to sample <em>x</em>, to determine a confidence interval;</li>
+<li><code>conf.level</code> argument: see intervals at other levels.</li>
+</ul>
+
+
+<h2>13. Forming a Confidence Interval for a Proportion</h2>
+
+<ul>
+<li><code>prop.test(n, x)</code>: sample size <em>n</em>, <em>x</em> successes;</li>
+<li>use <code>conf.level</code> argument for other confidence levels.</li>
+</ul>
+
+
+<h2>14. Comparing the Means of Two Samples</h2>
+
+<p>By default, <code>t.test()</code> assumes data is not paired. Test with two sample <em>x</em>, <em>y</em>:</p>
+
+<pre><code>t.test(x, y, paired=T)
+</code></pre>
+
+<h2>15. Testing a Correlation for Significance</h2>
+
+<ul>
+<li><code>cor.test(x, y, method="Spearman")</code> for nonnormally data; default is <em>Pearson</em> method.</li>
+<li>the function returns several values, including <em>p</em>-value from the test of significance. <u><em>p</em> &lt; 0.05</u> indicates that the correlation is likely significant; otherwise, not.</li>
+</ul>
+
+
+<h2>16. Creating a Scatter Plot</h2>
+
+<ul>
+<li><code>plot(x, y)</code>: two parallel vectors <em>x</em> and <em>y</em>;</li>
+<li><code>plot(dfrm)</code>: for data frame.</li>
+</ul>
+
+
+<h2>17. Creating a Bar Chart</h2>
+
+<ul>
+<li><code>barplot(vector)</code>;</li>
+<li>ref <code>tapply()</code>;</li>
+<li><code>barchart()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>18. Creating a Box Plot</h2>
+
+<ul>
+<li><code>boxplot(vector)</code></li>
+</ul>
+
+
+<h2>19. Creating a Histogram</h2>
+
+<ul>
+<li><code>hist(vector, number.of.bins)</code>: 7 bins by default;</li>
+<li><code>histogram()</code> from <em>lattice</em> package.</li>
+</ul>
+
+
+<h2>20. Performing Simple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ x)</code>: <code>y ~ x</code> is a <em>model formula</em></li>
+</ul>
+
+
+<h2>21. Performing Multiple Linear Regression</h2>
+
+<ul>
+<li><code>lm(y ~ u + v + w)</code></li>
+</ul>
+
+
+<h2>22. Getting Regression Statistics</h2>
+
+<ul>
+<li><p><code>m &lt;- lm(y ~ u + v + w)</code></p>
+
+<pre><code>  anova(m)                        ANOVA table
+  coef(m), coefficients(m)        Model coefficients
+  confint(m)                      Confidence intervals for the regression coefficients
+  deviance(m)                     Residual sum of squares
+  effects(m)                      Vector of orthogonal effects
+  fitted(m)                       Vector of fitted *y* values
+  resid(m), residuals(m)          Model residuals
+  summary(m)                      Key statistics
+  vcov(m)                         Variance-covariance matrix of the main parameters
+</code></pre></li>
+</ul>
+
+
+<h2>23. Diagnosing a Linear Regression</h2>
+
+<p>``` R
+m &lt;- lm(y ~ x)
+plot(m)</p>
+
+<p>library(car)
+outlier.test(m)
+```</p>
+
+<h2>24. Predicting New Values</h2>
+
+<p>``` R
+m &lt;- lm(y ~ u + v + w)
+preds &lt;- data.frame(u=3.1, v=4.0, w=5.5)
+predict(m, newdata=preds)</p>
+
+<p>preds &lt;- data.frame(</p>
+
+<pre><code>        u=c(...),
+        v=c(...),
+        w=c(...))
+</code></pre>
+
+<p>predict(m, newdata=preds)
+```</p>
+
+<ul>
+<li>use <code>interval="prediction"</code> argument of <code>predict()</code> to obtain the confidence intervals.</li>
+</ul>
+
+
+<h2>25. Accessing the Functions in a Package</h2>
+
+<ul>
+<li><code>library(packagename)</code>;</li>
+<li><code>detach(package:name)</code>;</li>
+<li>higher function <strong>masks</strong> the lower function.</li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Data Mashups in R]]></title>
+    <link href="http://zyxar.github.com/blog/2012/03/03/data-mashups-in-r/"/>
+    <updated>2012-03-03T20:31:00+08:00</updated>
+    <id>http://zyxar.github.com/blog/2012/03/03/data-mashups-in-r</id>
+    <content type="html"><![CDATA[<h2>Ch.I Mapping Foreclosures</h2>
+
+<ul>
+<li><p>download</p>
+
+<pre><code>  download.file(url="URL", destfile="DEST")
+</code></pre></li>
+<li><p>regex</p></li>
+</ul>
+
+
+<p><code>R
+grep()
+gsub()
+</code></p>
+
+<ul>
+<li><p>Yahoo!'s Latitude and Longitude service: <a href="http://developer.yahoo.com/wsregapp">sign up</a></p></li>
+<li><p>Parse XML</p></li>
+</ul>
+
+
+<p>``` R
+install.packages("XML")
+library("XML")
+xmlTreeParse(requestURL, isURL=T)</p>
+
+<p>install.package("RCurl")
+library("RCurl")
+```</p>
+
+<ul>
+<li><p>Proxy</p>
+
+<pre><code>  Sys.setenv("http_proxy" = "http://username:passwd@host:port")
+</code></pre></li>
+<li><p><em>Magic</em> <code>str()</code></p>
+
+<p>  it is good practice to closely examine each package's data structures using <code>str()</code></p></li>
+<li><p>Exception handling</p></li>
+</ul>
+
+
+<p>``` R
+tryCatch({</p>
+
+<pre><code>xmlResult &lt;- xmlTreeParse(requestURL, isURL=TRUE, addAttributeNamespaces=TRUE)
+#...other code...
+}, error=function(err){
+    cat("xml parsing or http error:", conditionMessage(err), "\n")
+</code></pre>
+
+<p>})
+```
+- <a href="http://cran.r-project.org/web/packages/PBSmapping/index.html">PBSmapping</a></p>
+
+<p><code>R
+library(PBSmapping)
+plotPolys()
+</code></p>
+
+<ul>
+<li>Exploring Data Structures</li>
+</ul>
+
+
+<p><code>R
+as.numeric()
+level()
+</code></p>
+
+<ul>
+<li>Color</li>
+</ul>
+
+
+<p>``` R
+head.colors()</p>
+
+<h2>```</h2>
+
+<h2>Ch.II Statistics of Foreclosure</h2>
+
+<ul>
+<li><p>Data is available at <a href="http://factfinder.census.gov/servlet/DCGeoSelectServlet?ds_name=DEC_2000_SF3_U">FactFinder</a></p></li>
+<li><p>skip lines when reading from file</p></li>
+</ul>
+
+
+<p><code>R
+read.table("FILE", skip=1, na.string="")
+</code>
+- Descriptive Statistics: <code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>cor()</code>, <code>summary()</code>.</p>
+
+<ul>
+<li><p>lattice</p>
+
+<pre><code>  library(lattice)
+  install.packages(latticsExtra)
+  library(latticeExtra)
+</code></pre>
+
+<ul>
+<li>plot: <code>stripplot()</code> + <code>bwplot()</code></li>
+</ul>
+</li>
+</ul>
+
+
+<p>``` R</p>
+
+<pre><code>print(stripplot(IncomeLevels ~ jitter(ct$FCs),
+    main=list(
+    "Foreclures grouped by National Median Household Income", cex=1),
+    sub=list("Greater or less than $50,000", cex=1),
+    xlab="foreclosures",
+    ylab="household median income",
+    aspect=.3, col="lightblue", pch=2 ) + 
+as.layer(bwplot(IncomeLevels ~ ct$FCs, varwidth=TRUE, box.ratio=0.4, col="blue", pch="|"))
+)
+</code></pre>
+
+<p>```</p>
+
+<ul>
+<li><p>Correlation</p>
+
+<p>  In R, we can create multidimensional correlation graphs using the <code>pairs()</code> scatterplot matrix package.</p></li>
+</ul>
+
+
+<hr />
+
+<h1>†</h1>
+]]></content>
+  </entry>
+  
+</feed>
