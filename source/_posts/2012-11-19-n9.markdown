@@ -1,0 +1,41 @@
+---
+layout: post
+title: "N9, MeeGo, et al"
+date: 2012-11-19 17:39
+comments: true
+categories: Notes
+---
+## Tools ##
+1. Nokia Suite:
+    - limited support, for backup and sync
+    - Contacts: cannot sync group
+    - only on [Windows](http://nds1.nokia.com/files/support/global/phones/software/Nokia_Suite_webinstaller_ALL.exe)
+2. [NokiaLink](http://nokia.com/nokialink):
+    - for [OS X](http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.dmg)
+    - for [Windows](http://nds1.nokia.com/files/support/global/phones/software/Install_Nokia_Link.exe)
+3. [Qt SDK](http://www.developer.nokia.com/Develop/Qt/Tools/)
+    - for OS X, Windows and Linux; online or offline
+    - Developer account required
+4. [Flasher](http://tablets-dev.nokia.com/maemo-dev-env-downloads.php)
+    - [OS X](http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=MacFlasher_3.12.1.dmg)
+    - [Linux-x64](http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_amd64.deb)
+    - [Linux-x86](http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=flasher_3.12.1_i386.deb)
+    - [Windows](http://tablets-dev.nokia.com/maemo-dev-env-downloads.php?f=WinFlasher_3.12.1.exe)
+5. [Repository](http://harmattan-dev.nokia.com/pool/)
+    - [Official](https://downloads.maemo.nokia.com)
+    - [My MeeGo](http://my-meego.com/)
+
+## Dev Mode ##
+- Settings -> Security -> Developer mode
+
+## Remove Native Apps? ##
+- Native apps for Chinese Mainland, such as `qunar`, `kaixin`, cannot be purged before applying some tricks.
+- Package `mp-harmattan-003-pr` has dependencies on those apps, which if been removed, the phone would be frozen as a rock.
+- This [site](https://gitorious.org/mp-harmattan-003-pr/mp-harmattan-003-pr) provides a work round, a patched package.
+
+## Selected Apps ##
+1. Foursquare: [download](http://my-meego.com/downloads/sendfile.php?DownloadID=285) and `dpkg -i`
+1. Skype: `apt-get install account-plugin-skype l10n-app-skype`
+1. Gtalk: `apt-get install account-plugin-google-talk l10n-app-google`
+1. Twitter: `apt-get install twitter l10n-app-twitter webupload-service-twitter`
+1. Facebook: `apt-get install facebook l10n-app-facebook webupload-service-facebook`
